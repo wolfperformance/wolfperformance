@@ -1,117 +1,286 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+:root{
+  --bg:#0b0b0f;
+  --bg2:#0f1117;
+  --text:#f5f7fb;
+  --muted: rgba(245,247,251,.72);
+  --line: rgba(255,255,255,.10);
+  --shadow: 0 22px 70px rgba(0,0,0,.45);
+  --radius: 24px;
+  --red:#ff1e1e;
+  --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "SF Pro Display","SF Pro Text","Segoe UI", Roboto, Helvetica, Arial;
+}
 
-  <title>Wolf Performance | Performance Tuning & Auto Service in Barrie</title>
-  <meta name="description" content="Wolf Performance in Barrie, Ontario: performance tuning, diagnostics, maintenance, and build planning. Book a consultation today." />
-  <meta name="theme-color" content="#0b0b0f" />
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(1100px 520px at 20% -10%, rgba(255,30,30,.22), transparent 60%),
+    radial-gradient(900px 520px at 80% 0%, rgba(255,255,255,.10), transparent 55%),
+    linear-gradient(180deg, var(--bg), var(--bg2));
+}
 
-  <!-- Canonical (update after domain is connected) -->
-  <link rel="canonical" href="https://wolfperformance.ca/" />
+a{ color:inherit; text-decoration:none; }
+.wrap{ width:min(1140px, 92%); margin:0 auto; }
 
-  <!-- Open Graph (update og:image later) -->
-  <meta property="og:title" content="Wolf Performance" />
-  <meta property="og:description" content="Performance tuning, diagnostics, and maintenance in Barrie / GTA." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wolfperformance.ca/" />
-  <meta property="og:image" content="https://wolfperformance.ca/assets/og.jpg" />
+/* NAV */
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(14px);
+  background: rgba(10,10,14,.55);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner{
+  height:66px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px;
+}
+.brand-logo{ height:26px; width:auto; display:block; filter: drop-shadow(0 6px 12px rgba(0,0,0,.35)); }
+.nav-links{ display:flex; gap:20px; font-size:14px; color: var(--muted); }
+.nav-links a:hover{ color: var(--text); }
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wolf Performance" />
-  <meta name="twitter:description" content="Performance tuning, diagnostics, and maintenance in Barrie / GTA." />
-  <meta name="twitter:image" content="https://wolfperformance.ca/assets/og.jpg" />
+.nav-cta{ display:flex; gap:10px; align-items:center; }
+.menu{
+  display:none;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+  padding:10px 12px;
+  border-radius: 14px;
+}
 
-  <style>
-    :root{
-      --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-              "SF Pro Display","SF Pro Text","Segoe UI", Roboto, Helvetica, Arial;
-    }
-  </style>
+/* Mobile menu */
+.mobile-menu{
+  display:none;
+  width:min(1140px, 92%);
+  margin:0 auto 12px;
+  padding: 12px;
+  gap:10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(16,18,24,.72);
+  backdrop-filter: blur(14px);
+}
+.mobile-menu a{
+  padding:10px 10px;
+  border-radius: 14px;
+  color: var(--muted);
+}
+.mobile-menu a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
+.mobile-menu.open{ display:grid; }
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  font-weight: 650;
+  font-size: 14px;
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn.primary{
+  border-color: transparent;
+  background: linear-gradient(135deg, rgba(255,30,30,.95), rgba(255,85,85,.85));
+  box-shadow: 0 18px 40px rgba(255,30,30,.18);
+}
+.btn.ghost{ background: rgba(255,255,255,.03); }
+.btn.block{ width:100%; }
 
-<body id="top">
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Wolf Performance home">
-        <img class="brand-logo" src="assets/wolf-logo.jpeg" alt="Wolf Performance logo" />
-      </a>
+/* HERO */
+.hero{ position:relative; padding: 84px 0 54px; overflow:hidden; }
+.hero-media{ position:absolute; inset:0; overflow:hidden; }
+.hero-img{ width:100%; height:100%; object-fit:cover; transform: scale(1.02); filter: contrast(1.06) saturate(1.05); }
+.hero-overlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(900px 520px at 25% 20%, rgba(255,30,30,.18), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.25) 40%, rgba(0,0,0,.78));
+}
 
-      <nav class="nav-links" aria-label="Primary">
-        <a href="#launch">Launch</a>
-        <a href="/blog/">Blog</a>
-        <a href="#contact">Contact</a>
-      </nav>
+.hero-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap:18px;
+  align-items:start;
+}
 
-      <div class="actions">
-        <a class="btn ghost" href="mailto:info@wolfperformance.ca">Email</a>
-        <a class="btn primary" id="bookBtn" href="#" target="_blank" rel="noreferrer">Book</a>
-      </div>
-    </div>
-  </header>
+.eyebrow{
+  color: rgba(255,255,255,.78);
+  letter-spacing: .18em;
+  font-size: 12px;
+  margin: 0 0 14px;
+}
+h1{
+  margin:0 0 12px;
+  font-size: clamp(40px, 4.8vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+.sub{
+  margin:0 0 18px;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.7;
+  max-width: 62ch;
+}
 
-  <main class="wrap hero" id="launch">
-    <section class="card">
-      <p class="eyebrow">WOLF PERFORMANCE</p>
-      <h1>Launching soon.</h1>
-      <p class="sub">
-        Premium performance + reliability. Builds, diagnostics, tuning, and clean execution.
-        We’re building a site that feels like a product.
-      </p>
+.hero-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 16px; }
 
-      <div class="row">
-        <a class="btn primary" href="#contact">Request a Quote</a>
-        <a class="btn ghost" id="bookBtn2" href="#" target="_blank" rel="noreferrer">Book on Calendly</a>
-      </div>
+.kpis{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+}
+.kpi{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255,255,255,.04);
+  padding: 12px 14px;
+}
+.kpi strong{ display:block; }
+.kpi span{ display:block; color: var(--muted); font-size: 13px; margin-top: 4px; }
 
-      <div class="meta">
-        <div class="chip">Barrie / GTA</div>
-        <div class="chip">OEM+ Driveability</div>
-        <div class="chip">Data-led Approach</div>
-      </div>
-    </section>
+.side-card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(10,10,14,.55);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.pill{
+  display:inline-flex;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,30,30,.35);
+  background: rgba(255,30,30,.10);
+  font-size: 12px;
+  font-weight: 650;
+}
+.side-card h2{ margin:10px 0 8px; font-size: 18px; }
+.muted{ color: var(--muted); }
+.tiny{ font-size: 13px; }
 
-    <section class="grid">
-      <article class="tile">
-        <h2>Services</h2>
-        <p class="muted">Tuning • Diagnostics • Maintenance • Build Planning</p>
-      </article>
-      <article class="tile">
-        <h2>Hours</h2>
-        <p class="muted">Mon–Fri 9:00–5:00 • Sat by appointment</p>
-      </article>
-      <article class="tile" id="contact">
-        <h2>Contact</h2>
-        <p class="muted">
-          <a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a><br/>
-          <a href="tel:+10000000000">(000) 000-0000</a>
-        </p>
-      </article>
-    </section>
+.form{ margin-top: 14px; display:grid; gap:10px; }
+label{ display:grid; gap:8px; color: rgba(245,247,251,.80); font-size: 13px; }
+input{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(10,10,14,.55);
+  color: var(--text);
+  outline:none;
+}
 
-    <footer class="footer">
-      <p class="muted tiny">© <span id="year"></span> Wolf Performance — All rights reserved.</p>
-    </footer>
-  </main>
+/* Sections */
+.section{ padding: 64px 0; }
+.section.soft{
+  background: rgba(255,255,255,.03);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
 
-  <!-- Local SEO: structured data (update phone/address/IG when ready) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AutoRepair",
-    "name": "Wolf Performance",
-    "url": "https://wolfperformance.ca",
-    "areaServed": "Barrie, Ontario",
-    "telephone": "+1-000-000-0000",
-    "email": "info@wolfperformance.ca",
-    "openingHours": ["Mo-Fr 09:00-17:00"],
-    "sameAs": ["https://www.instagram.com/YOURHANDLE"]
-  }
-  </script>
+.section-head h2{
+  margin:0;
+  font-size: clamp(28px, 3vw, 44px);
+  letter-spacing: -0.02em;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+  margin-top: 18px;
+}
+.card{
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.03);
+  padding: 18px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.22);
+}
+.card h3{ margin:0 0 10px; font-size: 18px; }
+.card p{ margin:0; color: var(--muted); line-height: 1.65; }
+.list{ margin: 12px 0 0; padding-left: 18px; color: rgba(245,247,251,.78); }
+.list li{ margin: 7px 0; }
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* Scroll gallery */
+.scroll-wrap{
+  margin-top: 18px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.scroll-row{ display:flex; gap:14px; padding: 6px 2px 12px; }
+.scroll-card{
+  flex: 0 0 min(420px, 84vw);
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.03);
+  overflow:hidden;
+  scroll-snap-align: start;
+  box-shadow: 0 18px 55px rgba(0,0,0,.35);
+  position: relative;
+}
+.scroll-card img{ width:100%; height:280px; object-fit: cover; display:block; }
+.scroll-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55));
+  pointer-events:none;
+}
+.scroll-meta{ padding: 14px 16px 16px; position:relative; z-index:1; }
+.scroll-meta .title{ font-weight: 750; }
+.scroll-meta .desc{ margin-top: 4px; color: var(--muted); font-size: 13.5px; }
+
+/* Contact */
+.contact{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:14px;
+  align-items:start;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+  margin-top: 16px;
+}
+.mini{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+  background: rgba(255,255,255,.03);
+}
+.mini-top{ color: var(--muted); font-size: 12px; }
+.mini-bottom{ margin-top: 6px; font-weight: 650; }
+.contact-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
+
+/* Footer */
+.footer{
+  padding: 36px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.footer-links{ display:flex; gap:14px; font-size: 14px; }
+.footer-links a:hover{ color: var(--text); }
+
+/* Responsive */
+@media (max-width: 980px){
+  .nav-links{ display:none; }
+  .menu{ display:inline-flex; }
+  .hero-grid{ grid-template-columns: 1fr; }
+  .kpis{ grid-template-columns: 1fr; }
+  .grid-3{ grid-template-columns: 1fr; }
+  .contact{ grid-template-columns: 1fr; }
+  .contact-grid{ grid-template-columns: 1fr; }
+}

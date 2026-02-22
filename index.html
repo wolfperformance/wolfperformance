@@ -4,24 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Wolf Performance | Performance Tuning & Auto Service in Barrie</title>
-  <meta name="description" content="Wolf Performance in Barrie, Ontario: performance tuning, diagnostics, maintenance, and build planning. Book a consultation today." />
+  <title>Wolf Performance | Tuning, Diagnostics & Builds (Barrie / GTA)</title>
+  <meta name="description" content="Wolf Performance: performance tuning, diagnostics, maintenance, and build planning in Barrie / GTA. Book a service slot today." />
   <meta name="theme-color" content="#0b0b0f" />
-
-  <!-- Canonical (update after domain is connected) -->
-  <link rel="canonical" href="https://wolfperformance.ca/" />
-
-  <!-- Open Graph (update og:image later) -->
-  <meta property="og:title" content="Wolf Performance" />
-  <meta property="og:description" content="Performance tuning, diagnostics, and maintenance in Barrie / GTA." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://wolfperformance.ca/" />
-  <meta property="og:image" content="https://wolfperformance.ca/assets/og.jpg" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wolf Performance" />
-  <meta name="twitter:description" content="Performance tuning, diagnostics, and maintenance in Barrie / GTA." />
-  <meta name="twitter:image" content="https://wolfperformance.ca/assets/og.jpg" />
 
   <style>
     :root{
@@ -37,80 +22,235 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Wolf Performance home">
-        <img class="brand-logo" src="assets/wolf-logo.jpeg" alt="Wolf Performance logo" />
+        <img class="brand-logo" src="assets/wolf-logo.png" alt="Wolf Performance logo" />
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="#launch">Launch</a>
-        <a href="/blog/">Blog</a>
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
       </nav>
 
-      <div class="actions">
-        <a class="btn ghost" href="mailto:info@wolfperformance.ca">Email</a>
-        <a class="btn primary" id="bookBtn" href="#" target="_blank" rel="noreferrer">Book</a>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#contact">Get Quote</a>
+        <a class="btn primary" id="bookBtnTop" href="#" target="_blank" rel="noreferrer">Book</a>
+        <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
       </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a class="btn primary" id="bookBtnMobile" href="#" target="_blank" rel="noreferrer">Book a Slot</a>
     </div>
   </header>
 
-  <main class="wrap hero" id="launch">
-    <section class="card">
-      <p class="eyebrow">WOLF PERFORMANCE</p>
-      <h1>Launching soon.</h1>
-      <p class="sub">
-        Premium performance + reliability. Builds, diagnostics, tuning, and clean execution.
-        We’re building a site that feels like a product.
-      </p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img class="hero-img"
+           src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
+           alt="Cinematic performance car" />
+      <div class="hero-overlay"></div>
+    </div>
 
-      <div class="row">
-        <a class="btn primary" href="#contact">Request a Quote</a>
-        <a class="btn ghost" id="bookBtn2" href="#" target="_blank" rel="noreferrer">Book on Calendly</a>
-      </div>
-
-      <div class="meta">
-        <div class="chip">Barrie / GTA</div>
-        <div class="chip">OEM+ Driveability</div>
-        <div class="chip">Data-led Approach</div>
-      </div>
-    </section>
-
-    <section class="grid">
-      <article class="tile">
-        <h2>Services</h2>
-        <p class="muted">Tuning • Diagnostics • Maintenance • Build Planning</p>
-      </article>
-      <article class="tile">
-        <h2>Hours</h2>
-        <p class="muted">Mon–Fri 9:00–5:00 • Sat by appointment</p>
-      </article>
-      <article class="tile" id="contact">
-        <h2>Contact</h2>
-        <p class="muted">
-          <a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a><br/>
-          <a href="tel:+10000000000">(000) 000-0000</a>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">WOLF PERFORMANCE • BARRIE / GTA</p>
+        <h1>Performance you can trust.</h1>
+        <p class="sub">
+          Tuning, diagnostics, maintenance, and phased build plans — designed for daily reliability and real gains.
         </p>
-      </article>
-    </section>
 
-    <footer class="footer">
-      <p class="muted tiny">© <span id="year"></span> Wolf Performance — All rights reserved.</p>
-    </footer>
-  </main>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Request a Quote</a>
+          <a class="btn ghost" id="bookBtnHero" href="#" target="_blank" rel="noreferrer">Book on Calendly</a>
+        </div>
 
-  <!-- Local SEO: structured data (update phone/address/IG when ready) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AutoRepair",
-    "name": "Wolf Performance",
-    "url": "https://wolfperformance.ca",
-    "areaServed": "Barrie, Ontario",
-    "telephone": "+1-000-000-0000",
-    "email": "info@wolfperformance.ca",
-    "openingHours": ["Mo-Fr 09:00-17:00"],
-    "sameAs": ["https://www.instagram.com/YOURHANDLE"]
-  }
-  </script>
+        <div class="kpis">
+          <div class="kpi"><strong>OEM+</strong><span>Smooth drivability</span></div>
+          <div class="kpi"><strong>Data-led</strong><span>Logs & validation</span></div>
+          <div class="kpi"><strong>Clean work</strong><span>Transparent scope</span></div>
+        </div>
+      </div>
+
+      <aside class="side-card">
+        <div class="pill">Fast Response</div>
+        <h2>Tell us your car + goal.</h2>
+        <p class="muted">We’ll reply with a clear plan: scope, timeline, and next steps.</p>
+
+        <!-- Free backend later (Formspree). For now this is a placeholder. -->
+        <form class="form" onsubmit="return false;">
+          <label>Vehicle
+            <input placeholder="2014 Mercedes E550" />
+          </label>
+          <label>Goal
+            <input placeholder="Stage 2+, cooling + downpipes" />
+          </label>
+          <label>Contact
+            <input placeholder="you@email.com or (555) 555-5555" />
+          </label>
+          <button class="btn primary block" type="button" onclick="location.href='#contact'">Continue</button>
+          <p class="tiny muted">We’ll connect this to email next.</p>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Core services</h2>
+        <p class="muted">Simple menu. Premium execution.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Performance Tuning</h3>
+          <p>Calibrated power with reliability-first logic.</p>
+          <ul class="list">
+            <li>ECU/TCU (where supported)</li>
+            <li>Logs + revisions</li>
+            <li>Build roadmap by phase</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Diagnostics</h3>
+          <p>Structured testing. No guessing.</p>
+          <ul class="list">
+            <li>Scan + live data</li>
+            <li>Boost / smoke testing</li>
+            <li>Electrical validation</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Maintenance</h3>
+          <p>Performance-friendly maintenance that protects your build.</p>
+          <ul class="list">
+            <li>Fluids & filters</li>
+            <li>Brakes & suspension</li>
+            <li>Cooling strategy</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section soft">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Recent work</h2>
+        <p class="muted">Swap these with your real photos later.</p>
+      </div>
+
+      <div class="scroll-wrap">
+        <div class="scroll-row">
+          <article class="scroll-card">
+            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1600&q=80" alt="Engine bay" />
+            <div class="scroll-meta">
+              <div class="title">Build Planning</div>
+              <div class="desc">Phased upgrades that make sense.</div>
+            </div>
+          </article>
+
+          <article class="scroll-card">
+            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1600&q=80" alt="Shop work" />
+            <div class="scroll-meta">
+              <div class="title">Shop Work</div>
+              <div class="desc">Clean installs. Clean results.</div>
+            </div>
+          </article>
+
+          <article class="scroll-card">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80" alt="Night shot" />
+            <div class="scroll-meta">
+              <div class="title">Performance</div>
+              <div class="desc">Power you can repeat.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What customers say</h2>
+        <p class="muted">Add real reviews later for instant trust + SEO.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="quote">
+          <p>“Professional, honest, and the car feels completely transformed.”</p>
+          <span>— Customer</span>
+        </article>
+        <article class="quote">
+          <p>“Clear plan, no surprises. Work was clean and on time.”</p>
+          <span>— Customer</span>
+        </article>
+        <article class="quote">
+          <p>“The best part is how smooth it drives. OEM+ but faster.”</p>
+          <span>— Customer</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section soft">
+    <div class="wrap contact">
+      <div>
+        <h2>Book or request a quote.</h2>
+        <p class="muted">Fast response. Clear plan. Premium work.</p>
+
+        <div class="contact-grid">
+          <div class="mini">
+            <div class="mini-top">Email</div>
+            <div class="mini-bottom"><a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a></div>
+          </div>
+          <div class="mini">
+            <div class="mini-top">Phone</div>
+            <div class="mini-bottom"><a href="tel:+10000000000">(000) 000-0000</a></div>
+          </div>
+          <div class="mini">
+            <div class="mini-top">Location</div>
+            <div class="mini-bottom">Barrie / GTA</div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn primary" id="bookBtnBottom" href="#" target="_blank" rel="noreferrer">Book a Slot</a>
+          <a class="btn ghost" href="#top">Back to top</a>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3>Hours</h3>
+        <p class="muted">Mon–Fri 9:00–5:00 • Sat by appointment • Sun closed</p>
+        <p class="tiny muted">Next: we’ll wire the form + chat once the layout is locked.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="muted tiny">© <span id="year"></span> Wolf Performance. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
