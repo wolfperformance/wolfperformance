@@ -15,6 +15,16 @@ if (menuBtn && mobileMenu) {
   });
 }
 
+// Close mobile menu on link click
+if (mobileMenu) {
+  mobileMenu.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      menuBtn?.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
 // Navbar blur/fade on scroll
 const nav = document.querySelector(".nav");
 function onScrollUI() {
