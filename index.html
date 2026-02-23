@@ -1,240 +1,270 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>ECU Tuning Barrie | Performance Exhaust & Diagnostics | Wolf Performance</title>
+  <title>Wolf Performance | Tuning, Diagnostics & Builds (Barrie / GTA)</title>
+  <meta name="description" content="Wolf Performance: performance tuning, diagnostics, maintenance, and build planning in Barrie / GTA. Book a service slot today." />
+  <meta name="theme-color" content="#0b0b0f" />
 
-<meta name="description"
-content="Wolf Performance specializes in ECU tuning, diagnostics, performance exhaust systems and maintenance in Barrie, Ontario. Stage 1 and Stage 2 calibration available." />
+  <style>
+    :root{
+      --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+              "SF Pro Display","SF Pro Text","Segoe UI", Roboto, Helvetica, Arial;
+    }
+  </style>
 
-<meta name="theme-color" content="#0b0b0f" />
-
-<link rel="stylesheet" href="styles.css" />
-
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-XXXXXXXX');
-</script>
-
-<!-- STRUCTURED DATA -->
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"AutoRepair",
- "name":"Wolf Performance",
- "image":"https://wolfperformance.ca/assets/wolf-logo.png",
- "address":{
-   "@type":"PostalAddress",
-   "addressLocality":"Barrie",
-   "addressRegion":"ON",
-   "addressCountry":"CA"
- },
- "areaServed":["Barrie","Innisfil","Midland","Simcoe County"],
- "description":"ECU tuning, performance exhaust systems, diagnostics and maintenance in Barrie."
-}
-</script>
-
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body id="top">
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Wolf Performance home">
+        <img class="brand-logo" src="assets/wolf-logo.png" alt="Wolf Performance logo" />
+      </a>
 
-<header class="nav">
-<div class="wrap nav-inner">
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<a class="brand" href="#top" aria-label="Wolf Performance home">
-<img class="brand-logo" src="assets/wolf-logo.png" alt="Wolf Performance logo" />
-</a>
+      <div class="nav-cta">
+        <a class="btn ghost" href="#contact">Get Quote</a>
+        <a class="btn primary" id="bookBtnTop" href="#" target="_blank" rel="noreferrer">Book</a>
+        <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+      </div>
+    </div>
 
-<nav class="nav-links" aria-label="Primary">
-<a href="#services">Services</a>
-<a href="#work">Work</a>
-<a href="#reviews">Reviews</a>
-<a href="#contact">Contact</a>
-</nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a class="btn primary" id="bookBtnMobile" href="#" target="_blank" rel="noreferrer">Book a Slot</a>
+    </div>
+  </header>
 
-<div class="nav-cta">
-<a class="btn ghost" href="#contact">Get Quote</a>
-<a class="btn primary" href="booking.html">Book</a>
-<button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img class="hero-img" data-parallax="hero"
+     src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
+     alt="Cinematic performance car" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">WOLF PERFORMANCE • BARRIE / GTA</p>
+        <h1>Performance you can trust.</h1>
+        <p class="sub">
+          Tuning, diagnostics, maintenance, and phased build plans — designed for daily reliability and real gains.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Request a Quote</a>
+          <a class="btn ghost" id="bookBtnHero" href="#" target="_blank" rel="noreferrer">Book on Calendly</a>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi"><strong>OEM+</strong><span>Smooth drivability</span></div>
+          <div class="kpi"><strong>Data-led</strong><span>Logs & validation</span></div>
+          <div class="kpi"><strong>Clean work</strong><span>Transparent scope</span></div>
+        </div>
+      </div>
+
+      <aside class="side-card reveal delay-1">
+        <div class="pill">Fast Response</div>
+        <h2>Tell us your car + goal.</h2>
+        <p class="muted">We’ll reply with a clear plan: scope, timeline, and next steps.</p>
+
+        <!-- Free backend later (Formspree). For now this is a placeholder. -->
+        <form class="form" onsubmit="return false;">
+          <label>Vehicle
+            <input placeholder="2014 Mercedes E550" />
+          </label>
+          <label>Goal
+            <input placeholder="Stage 2+, cooling + downpipes" />
+          </label>
+          <label>Contact
+            <input placeholder="you@email.com or (555) 555-5555" />
+          </label>
+          <button class="btn primary block" type="button" onclick="location.href='#contact'">Continue</button>
+          <p class="tiny muted">We’ll connect this to email next.</p>
+        </form>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Core services</h2>
+        <p class="muted">Simple menu. Premium execution.</p>
+      </div>
+
+      <div class="grid-3">
+       <article class="card reveal delay-1">
+          <h3>Performance Tuning</h3>
+          <p>Calibrated power with reliability-first logic.</p>
+          <ul class="list">
+            <li>ECU/TCU (where supported)</li>
+            <li>Logs + revisions</li>
+            <li>Build roadmap by phase</li>
+          </ul>
+        </article>
+
+        <article class="card reveal delay-2">
+          <h3>Diagnostics</h3>
+          <p>Structured testing. No guessing.</p>
+          <ul class="list">
+            <li>Scan + live data</li>
+            <li>Boost / smoke testing</li>
+            <li>Electrical validation</li>
+          </ul>
+        </article>
+
+        <article class="card reveal delay-3">
+          <h3>Maintenance</h3>
+          <p>Performance-friendly maintenance that protects your build.</p>
+          <ul class="list">
+            <li>Fluids & filters</li>
+            <li>Brakes & suspension</li>
+            <li>Cooling strategy</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="section soft reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Recent work</h2>
+        <p class="muted">Swap these with your real photos later.</p>
+      </div>
+
+      <div class="scroll-wrap">
+        <div class="scroll-row">
+          <article class="scroll-card reveal delay-1">
+            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1600&q=80" alt="Engine bay" />
+            <div class="scroll-meta">
+              <div class="title">Build Planning</div>
+              <div class="desc">Phased upgrades that make sense.</div>
+            </div>
+          </article>
+
+          <article class="scroll-card reveal delay-2">
+            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1600&q=80" alt="Shop work" />
+            <div class="scroll-meta">
+              <div class="title">Shop Work</div>
+              <div class="desc">Clean installs. Clean results.</div>
+            </div>
+          </article>
+
+          <article class="scroll-card reveal delay-3">
+            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80" alt="Night shot" />
+            <div class="scroll-meta">
+              <div class="title">Performance</div>
+              <div class="desc">Power you can repeat.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What customers say</h2>
+        <p class="muted">Add real reviews later for instant trust + SEO.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="quote reveal delay-1">
+          <p>“Professional, honest, and the car feels completely transformed.”</p>
+          <span>— Customer</span>
+        </article>
+        <article class="quote reveal delay-2">
+          <p>“Clear plan, no surprises. Work was clean and on time.”</p>
+          <span>— Customer</span>
+        </article>
+        <article class="quote reveal delay-3">
+          <p>“The best part is how smooth it drives. OEM+ but faster.”</p>
+          <span>— Customer</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section soft reveal">
+    <div class="wrap contact">
+      <div>
+        <h2>Book or request a quote.</h2>
+        
+        <p class="muted">Fast response. Clear plan. Premium work.</p>
+
+        <div class="contact-grid">
+          <div class="mini">
+            <div class="mini-top">Email</div>
+            <div class="mini-bottom"><a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a></div>
+          </div>
+          <div class="mini">
+            <div class="mini-top">Phone</div>
+            <div class="mini-bottom"><a href="tel:+4168392266">(416) 839-2266</a></div>
+          </div>
+          <div class="mini">
+            <div class="mini-top">Location</div>
+            <div class="mini-bottom">Barrie / GTA</div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn primary" id="bookBtnBottom" href="#" target="_blank" rel="noreferrer">Book a Slot</a>
+          <a class="btn ghost" href="#top">Back to top</a>
+        </div>
+      </div>
+
+      <div class="side-card reveal delay-1">
+        <h3>Hours</h3>
+        <p class="muted">Mon–Sat 9:30–7:30 • Sun by appointment </p>
+        <h3>Follow us</h3>
+        <p class="muted">See our latest work and updates.</p>
+        <div class="social" aria-label="Social links">
+  <a class="social-link"
+     href="https://www.instagram.com/wolfmotoperformance.ca/"
+     target="_blank" rel="noreferrer"
+     aria-label="Instagram">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4A3.8 3.8 0 0 0 20 16.2V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2Zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2Zm4.7-2.3a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9Z"/>
+    </svg>
+    <span>Instagram</span>
+  </a>
 </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="muted tiny">© <span id="year"></span> Wolf Performance. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
 
-<div class="mobile-menu" id="mobileMenu">
-<a href="#services">Services</a>
-<a href="#work">Work</a>
-<a href="#reviews">Reviews</a>
-<a href="#contact">Contact</a>
-<a class="btn primary" href="booking.html">Book a Slot</a>
-</div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-
-<div class="hero-media">
-<img class="hero-img"
-src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
-alt="High performance vehicle at Wolf Performance Barrie" />
-<div class="hero-overlay"></div>
-</div>
-
-<div class="wrap hero-grid">
-
-<div class="hero-copy reveal">
-<p class="eyebrow">WOLF PERFORMANCE • BARRIE</p>
-
-<h1>ECU Tuning & Performance Engineering</h1>
-
-<p class="sub">
-Stage 1 and Stage 2 ECU calibration, diagnostics,
-performance exhaust systems and maintenance —
-built for real gains and daily reliability.
-</p>
-
-<div class="hero-actions">
-<a class="btn primary" href="consultation.html">Start Consultation</a>
-<a class="btn ghost" href="booking.html">Book Appointment</a>
-</div>
-
-<div class="kpis">
-<div class="kpi"><strong>Stage 1 & 2</strong><span>Calibrated Power</span></div>
-<div class="kpi"><strong>Data-Led</strong><span>Logs & Validation</span></div>
-<div class="kpi"><strong>Clean Execution</strong><span>Premium Standard</span></div>
-</div>
-</div>
-
-<aside class="side-card reveal delay-1">
-<div class="pill">Fast Response</div>
-<h2>Tell us your car + goal.</h2>
-<p class="muted">We’ll reply with scope, timeline and next steps.</p>
-
-<form class="form" action="consultation.html">
-<label>Vehicle
-<input placeholder="2014 Mercedes E550" />
-</label>
-<label>Goal
-<input placeholder="Stage 2+, cooling + downpipes" />
-</label>
-<label>Contact
-<input placeholder="you@email.com or (555) 555-5555" />
-</label>
-<button class="btn primary block" type="submit">Continue</button>
-</form>
-</aside>
-
-</div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="section">
-<div class="wrap">
-<div class="section-head">
-<h2>ECU Tuning & Performance Services in Barrie</h2>
-<p class="muted">Performance-first. Reliability-focused.</p>
-</div>
-
-<div class="grid-3">
-
-<article class="card reveal delay-1">
-<h3>ECU Tuning</h3>
-<p>Stage 1 and Stage 2 calibration engineered for safe torque gains and optimized drivability.</p>
-<ul class="list">
-<li>Turbocharged platforms</li>
-<li>ECU / TCU calibration</li>
-<li>Data logging & revisions</li>
-</ul>
-</article>
-
-<article class="card reveal delay-2">
-<h3>Diagnostics</h3>
-<p>Structured testing with no guessing.</p>
-<ul class="list">
-<li>Scan tools & live data</li>
-<li>Boost & smoke testing</li>
-<li>Electrical validation</li>
-</ul>
-</article>
-
-<article class="card reveal delay-3">
-<h3>Performance Maintenance</h3>
-<p>Maintenance that protects tuned vehicles.</p>
-<ul class="list">
-<li>Fluids & filters</li>
-<li>Cooling system optimization</li>
-<li>Brake & suspension upgrades</li>
-</ul>
-</article>
-
-</div>
-</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section soft">
-<div class="wrap contact">
-
-<div>
-<h2>Book or request a quote.</h2>
-<p class="muted">Barrie performance tuning specialist.</p>
-
-<div class="contact-grid">
-<div class="mini">
-<div class="mini-top">Email</div>
-<div class="mini-bottom">
-<a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a>
-</div>
-</div>
-
-<div class="mini">
-<div class="mini-top">Phone</div>
-<div class="mini-bottom">
-<a href="tel:+14168392266">(416) 839-2266</a>
-</div>
-</div>
-
-<div class="mini">
-<div class="mini-top">Location</div>
-<div class="mini-bottom">Barrie, Ontario</div>
-</div>
-</div>
-
-<div class="contact-actions">
-<a class="btn primary" href="booking.html">Book Now</a>
-<a class="btn ghost" href="#top">Back to top</a>
-</div>
-</div>
-
-</div>
-</section>
-
-<footer class="footer">
-<div class="wrap footer-inner">
-<div class="muted tiny">
-© <span id="year"></span> Wolf Performance — ECU Tuning Barrie
-</div>
-<div class="footer-links">
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
-</div>
-</div>
-</footer>
-
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
-
-<!-- CHATBASE -->
-<script>
-window.chatbaseConfig={chatbotId:"YOUR-CHATBASE-ID"}
-</script>
-<script src="https://www.chatbase.co/embed.min.js" defer></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
