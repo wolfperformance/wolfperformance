@@ -1,9 +1,4 @@
-// Calendly link (set later)
-const CALENDLY_URL = "https://calendly.com/YOUR_CALENDLY_LINK";
-["bookBtnTop","bookBtnHero","bookBtnMobile","bookBtnBottom"].forEach(id=>{
-  const el = document.getElementById(id);
-  if (el) el.href = CALENDLY_URL;
-});
+
 
 // Mobile menu
 const menuBtn = document.getElementById("menuBtn");
