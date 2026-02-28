@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Book ECU Tuning & Service | Wolf Performance Barrie</title>
+
+<meta name="description"
+content="Book ECU tuning, performance exhaust installation, diagnostics or maintenance at Wolf Performance in Barrie, Ontario.">
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-XXXXXXXX');
+</script>
+
+<style>
+.booking-hero{
+padding:80px 0 40px;
+text-align:center;
+}
+.booking-frame{
+margin-top:30px;
+border-radius:24px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.10);
+box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+.booking-benefits{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:14px;
+margin-top:40px;
+}
+.booking-benefit{
+border:1px solid rgba(255,255,255,.10);
+border-radius:18px;
+padding:16px;
+background:rgba(255,255,255,.03);
+}
+@media(max-width:900px){
+.booking-benefits{grid-template-columns:1fr;}
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/wolf-logo.png" alt="Wolf Performance logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="booking-hero">
+<div class="wrap">
+
+<p class="eyebrow">WOLF PERFORMANCE • BARRIE</p>
+<h1>Book Your Performance Appointment</h1>
+<p class="sub">
+Secure your ECU tuning, performance exhaust install,
+diagnostics or maintenance slot today.
+</p>
+
+<div class="booking-benefits">
+  <div class="booking-benefit">
+    <strong>Transparent Scheduling</strong>
+    <p class="muted">See real-time availability.</p>
+  </div>
+  <div class="booking-benefit">
+    <strong>Performance-Focused Service</strong>
+    <p class="muted">Built around tuned platforms.</p>
+  </div>
+  <div class="booking-benefit">
+    <strong>Fast Confirmation</strong>
+    <p class="muted">Automated reminders included.</p>
+  </div>
+</div>
+
+<div class="booking-frame">
+<iframe
+id="ariFrame"
+src="https://portal.ari.app/booking?FBProject=ARI&shopID=09XdJxnM2bRKdDHTR1RSskLsmoH2&version=v.15.8.20"
+width="100%"
+height="1100"
+style="border:none;">
+</iframe>
+</div>
+
+</div>
+</section>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="muted tiny">
+      © <span id="year"></span> Wolf Performance — Barrie, Ontario
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+/* Track booking page visit */
+if (typeof gtag !== "undefined") {
+  gtag('event','booking_page_view',{
+    'event_category':'engagement',
+    'event_label':'ARI Booking Page'
+  });
+}
+</script>
+
+</body>
+</html>
