@@ -927,3 +927,4 @@ h4, .info-card h3, .statement-meta dd small { word-spacing: normal; }
 .nav-links a { white-space: nowrap; }
 @media (max-width: 1240px) { .nav-links { gap: 22px; } }
 @media (max-width: 1080px) { .nav-links { gap: 16px; } .nav-links a { font-size: 0.86rem; } }
+.change-media img[src*="miata-na-gate"] { object-position: 72% 50%; } /* 2026-10-20: keep both halo headlights in the taller phone card crop */
