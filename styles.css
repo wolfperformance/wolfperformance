@@ -832,7 +832,7 @@ h4, .info-card h3, .statement-meta dd small { word-spacing: normal; }
   .pkg-assure { align-items: flex-start; padding: 14px 16px; font-size: .94rem; }
 }
 
-/* ===================== PRICING 2 (2026-10-10): perf tier, bundle, no travel fee ===================== */
+/* ===================== PRICING 2 (2026-10-10): perf tier, bundle, mobile note ===================== */
 .pkg-assures { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(12px, 1.4vw, 20px); margin: 0 0 clamp(22px, 2.4vw, 32px); }
 .pkg-assures .pkg-assure { margin: 0; }
 .pkg-price-for { color: var(--text-soft); font-size: .86rem; }
@@ -921,6 +921,18 @@ h4, .info-card h3, .statement-meta dd small { word-spacing: normal; }
   .hero { padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
   /* short phones: the note overlaps the car roof, so give it a dark backing to keep WCAG AA */
   .hero-note { width: fit-content; max-width: 100%; background: rgba(5,5,6,.72); padding: 4px 12px 4px 4px; border-radius: 999px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+}
+
+/* PORTRAIT TABLET STAGE (2026-10-20 iPad fix): the portrait doughnut loop is picked by (max-aspect-ratio: 1/1) alone
+   (<source media> + main.js), but the bottom stage above only covered <=900px. Portrait screens wider than that
+   (iPad Pro 12.9"/13" at 1024/1032px, big Android tablets) got the portrait video framed like desktop (centred), so the car,
+   which sits in the bottom ~16% of that video, was cropped off and only the dark sky showed. Same stage here. */
+@media (min-width: 901px) and (max-aspect-ratio: 1/1) {
+  .hero { padding-bottom: calc(31vw + env(safe-area-inset-bottom)); }
+  .hero-media video, .hero-media .hero-poster img { object-position: 50% 100%; }
+  .hero-media-inner { transform-origin: 50% 100%; }
+  .hero-shade { background: linear-gradient(180deg, rgba(5,5,6,.6) 0%, rgba(5,5,6,.42) 30%, rgba(5,5,6,.55) 55%, rgba(5,5,6,.5) 70%, rgba(5,5,6,.1) 78%, rgba(5,5,6,0) 86%, rgba(5,5,6,.35) 99%, #050506 100%); }
+  .hero-scroll { display: none; }
 }
 
 /* Nav with "Cars we tune" (model pages preview): keep each link on one line on small laptops / iPad landscape */

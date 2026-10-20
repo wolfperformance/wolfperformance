@@ -200,6 +200,21 @@
       video.addEventListener('playing', markPlaying, { once: true });
       video.__hero = true;
       if (!REC) robustPlay(video);
+      // Rotation (iPad / phone turned after load): the <source media> choice is only made once, so a portrait loop would stay
+      // in a landscape hero (car cropped off, dark frame) and vice versa. Swap to the matching loop; the poster <picture>
+      // switches on its own and shows while the new loop loads.
+      var orientMQ = w.matchMedia('(max-aspect-ratio: 1/1)');
+      var vq = (((video.querySelector('source') || {}).src || '').split('?')[1] || '');
+      var onOrient = function () {
+        var b = video.getAttribute(orientMQ.matches ? 'data-src-portrait' : 'data-src-landscape');
+        if (!b || (video.currentSrc || '').indexOf(b.split('/').pop() + '.') !== -1) return;
+        base = b;
+        video.classList.remove('is-playing');
+        video.addEventListener('playing', markPlaying, { once: true });
+        video.src = b + (canWebm(video) || !video.canPlayType('video/mp4') ? '.webm' : '.mp4') + (vq ? '?' + vq : '');
+        video.load(); tryPlay(video);
+      };
+      if (orientMQ.addEventListener) orientMQ.addEventListener('change', onOrient); else if (orientMQ.addListener) orientMQ.addListener(onOrient);
       d.addEventListener('visibilitychange', function () {
         if (!video || REC) return;
         if (d.hidden) video.pause(); else tryPlay(video);
@@ -303,10 +318,13 @@
       // Leaving the hero: pinned on desktop, light parallax on mobile
       var copy = hero.querySelector('.hero-inner');
       var shade = hero.querySelector('.hero-shade');
-      mm.add('(min-width: 901px)', function () {
+      mm.add({ wide: '(min-width: 901px)', portrait: '(max-aspect-ratio: 1/1)' }, function (ctx) {
+        if (!ctx.conditions.wide) return;
         var out = gsap.timeline({ defaults: { ease: 'none' } });
-        out.to(inner, { scale: 0.86, yPercent: -4 }, 0)
-           .to(copy, { yPercent: -28, opacity: 0 }, 0)
+        // Portrait tablets (iPad Pro 12.9"/13" portrait) show the bottom-anchored portrait loop: don't shrink/lift it
+        // while pinned, or the car leaves the frame and a black band opens above the trust row. Re-runs on rotation.
+        if (!ctx.conditions.portrait) out.to(inner, { scale: 0.86, yPercent: -4 }, 0);
+        out.to(copy, { yPercent: -28, opacity: 0 }, 0)
            .to(shade, { opacity: 0.6 }, 0);
         ST.create({ trigger: hero, start: 'top top', end: '+=70%', pin: true, pinSpacer: hero.parentNode.classList.contains('hero-pin') ? hero.parentNode : undefined, pinSpacing: true, scrub: 0.6, animation: out, anticipatePin: 1 });
       });
