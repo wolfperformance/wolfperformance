@@ -1,392 +1,875 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-CA">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Wolf Performance | Tuning, Diagnostics & Builds (Barrie / GTA)</title>
-  <meta name="description" content="Wolf Performance: performance tuning, diagnostics, maintenance, and build planning in Barrie / GTA. Book a service slot today." />
-  <meta name="theme-color" content="#0b0b0f" />
-
-  <style>
-    :root{
-      --font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-              "SF Pro Display","SF Pro Text","Segoe UI", Roboto, Helvetica, Arial;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mobile ECU Tuning Toronto &amp; GTA | Wolf Performance</title>
+  <meta name="description" content="Unlock the car you already own. Mobile ECU tuning with pro-grade equipment at your home or work across Toronto, the GTA &amp; Barrie.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://wolfperformance.ca/">
+  <link rel="alternate" hreflang="en-CA" href="https://wolfperformance.ca/">
+  <link rel="alternate" hreflang="x-default" href="https://wolfperformance.ca/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Wolf Performance">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:title" content="Mobile ECU Tuning Toronto &amp; GTA | Wolf Performance">
+  <meta property="og:description" content="Unlock the car you already own. Mobile ECU tuning with pro-grade equipment at your home or work across Toronto, the GTA &amp; Barrie.">
+  <meta property="og:url" content="https://wolfperformance.ca/">
+  <meta property="og:image" content="https://wolfperformance.ca/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Wolf Performance — mobile ECU tuning across Toronto and the GTA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mobile ECU Tuning Toronto &amp; GTA | Wolf Performance">
+  <meta name="twitter:description" content="Unlock the car you already own. Mobile ECU tuning with pro-grade equipment at your home or work across Toronto, the GTA &amp; Barrie.">
+  <meta name="twitter:image" content="https://wolfperformance.ca/assets/og-image.png">
+  <meta name="geo.region" content="CA-ON">
+  <meta name="geo.placename" content="Toronto">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" as="image" href="assets/video/hero-poster.avif" type="image/avif" media="(min-aspect-ratio: 1/1)">
+  <link rel="preload" as="image" href="assets/video/hero-poster-portrait.avif" type="image/avif" media="(max-aspect-ratio: 1/1)">
+  <link rel="preload" href="assets/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Inter-Variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>(function(d){try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("js-motion");setTimeout(function(){if(!window.__wolfMotion){window.__wolfMotionFailsafe=1;d.classList.remove("js-motion")}},4000)}}catch(e){}})(document.documentElement);</script>
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "@id": "https://wolfperformance.ca/#business",
+  "name": "Wolf Performance",
+  "url": "https://wolfperformance.ca/",
+  "logo": "https://wolfperformance.ca/assets/wolf-logo.png",
+  "image": "https://wolfperformance.ca/assets/og-image.png",
+  "telephone": "+14168392266",
+  "email": "info@wolfperformance.ca",
+  "description": "Mobile ECU tuning, TCU calibration, diagnostics, scan and coding, and pre-tune health checks. Wolf Performance comes to the customer across Toronto, the GTA and Barrie.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Toronto"
+    },
+    {
+      "@type": "City",
+      "name": "North York"
+    },
+    {
+      "@type": "City",
+      "name": "Etobicoke"
+    },
+    {
+      "@type": "City",
+      "name": "Scarborough"
+    },
+    {
+      "@type": "City",
+      "name": "Mississauga"
+    },
+    {
+      "@type": "City",
+      "name": "Brampton"
+    },
+    {
+      "@type": "City",
+      "name": "Vaughan"
+    },
+    {
+      "@type": "City",
+      "name": "Markham"
+    },
+    {
+      "@type": "City",
+      "name": "Richmond Hill"
+    },
+    {
+      "@type": "City",
+      "name": "Oakville"
+    },
+    {
+      "@type": "City",
+      "name": "Pickering"
+    },
+    {
+      "@type": "City",
+      "name": "Ajax"
+    },
+    {
+      "@type": "City",
+      "name": "Newmarket"
+    },
+    {
+      "@type": "City",
+      "name": "Aurora"
+    },
+    {
+      "@type": "City",
+      "name": "Barrie"
+    },
+    {
+      "@type": "City",
+      "name": "Burlington"
+    },
+    {
+      "@type": "City",
+      "name": "Hamilton"
+    },
+    {
+      "@type": "City",
+      "name": "Milton"
+    },
+    {
+      "@type": "City",
+      "name": "Whitby"
+    },
+    {
+      "@type": "City",
+      "name": "Oshawa"
+    },
+    {
+      "@type": "City",
+      "name": "Orillia"
+    },
+    {
+      "@type": "City",
+      "name": "Collingwood"
+    },
+    {
+      "@type": "City",
+      "name": "The Blue Mountains"
+    },
+    {
+      "@type": "City",
+      "name": "Kitchener"
+    },
+    {
+      "@type": "City",
+      "name": "Waterloo"
+    },
+    {
+      "@type": "City",
+      "name": "Cambridge"
+    },
+    {
+      "@type": "City",
+      "name": "Guelph"
+    },
+    {
+      "@type": "City",
+      "name": "St. Catharines"
+    },
+    {
+      "@type": "City",
+      "name": "Niagara Falls"
+    },
+    {
+      "@type": "City",
+      "name": "Niagara Region"
+    },
+    {
+      "@type": "City",
+      "name": "Peterborough"
+    },
+    {
+      "@type": "City",
+      "name": "Kawartha Lakes"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Greater Toronto Area"
     }
-  </style>
-
-  <link rel="stylesheet" href="styles.css" />
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:30",
+      "closes": "19:30"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/wolfmotoperformance.ca/",
+    "https://share.google/OvfHWgjiSA1blfuC3"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "7",
+    "bestRating": "5"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you really come to me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Wolf Performance is a mobile service. We come to your home, your workplace or wherever the car is parked safely across Toronto, the GTA and Barrie, so there is no drop-off and no waiting room."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ECU tuning safe for daily driving?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Done properly, yes. We prioritize reliability and thermal management, confirm the car is healthy first, and validate the result with logs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I go back to stock?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your original factory map is saved before we write anything, so the car can be returned to stock if you ever need to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much power will I gain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the car, the engine, the fuel you run and its condition, so we don't quote a generic number. We review your car first and tell you honestly what is realistic before any work is done. Your original factory map is saved, so you can always go back to stock."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Starting prices (CAD): Stage 1 from $999; Stage 1 for performance and V8 cars from $1,499; Stage 2 from $1,299; TCU / gearbox tuning from $999; the Stage 1 + TCU bundle from $1,799; diagnostics and health scan from $99. The $99 health scan is credited toward any tune booked within 30 days. No travel fee across Toronto, the GTA and Barrie. Your exact price depends on the platform and what you want, so send your car through the quick quote form or call (416) 839-2266 and we quote for your car before anything is booked in."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Mobile ECU tuning",
+  "serviceType": "ECU tuning",
+  "provider": {
+    "@type": "AutomotiveBusiness",
+    "name": "Wolf Performance",
+    "url": "https://wolfperformance.ca/"
+  },
+  "areaServed": "Toronto, the GTA and Barrie, Ontario",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Stage 1 ECU tune",
+      "url": "https://wolfperformance.ca/#packages",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 999,
+        "priceCurrency": "CAD"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Stage 2 ECU tune",
+      "url": "https://wolfperformance.ca/#packages",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 1299,
+        "priceCurrency": "CAD"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "TCU / gearbox tuning",
+      "url": "https://wolfperformance.ca/#packages",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 999,
+        "priceCurrency": "CAD"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Diagnostics & health scan",
+      "url": "https://wolfperformance.ca/#packages",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 99,
+        "priceCurrency": "CAD"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Stage 1 ECU tune: performance & V8 cars",
+      "url": "https://wolfperformance.ca/#packages",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 1499,
+        "priceCurrency": "CAD"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Stage 1 + TCU bundle",
+      "url": "https://wolfperformance.ca/#packages",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "minPrice": 1799,
+        "priceCurrency": "CAD"
+      }
+    }
+  ]
+}
+  </script>
 </head>
-
-<body id="top">
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Wolf Performance home">
-        <img class="brand-logo" src="assets/wolf-logo.png" alt="Wolf Performance logo" />
+<body class="page-home">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="index.html" aria-label="Wolf Performance home">
+        <picture><source type="image/webp" srcset="assets/wordmark-nav.webp"><img src="assets/wordmark-nav.png" alt="Wolf Performance" width="320" height="137" decoding="async" fetchpriority="high"></picture>
       </a>
-
       <nav class="nav-links" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="performance-auto-repair-barrie.html">Performance Guide</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="index.html#how">How it works</a>
+        <a href="service-areas.html">Service areas</a>
+        <a href="booking.html">Book</a>
+        <a href="tel:+14168392266">Call</a>
       </nav>
-
       <div class="nav-cta">
-        <a class="btn ghost" href="#contact">Get Quote</a>
-        <a class="btn primary" id="bookBtnTop" href="booking.html" >Book</a>
-        <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+        <a class="btn btn-secondary btn-sm" href="tel:+14168392266">(416) 839-2266</a>
+        <a class="btn btn-primary btn-sm" href="booking.html">Book</a>
+        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-      <a class="btn primary" id="bookBtnMobile" href="booking.html" >Book a Slot</a>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-media">
-      <img class="hero-img" data-parallax="hero"
-     src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80"
-     alt="Cinematic performance car" />
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="wrap hero-grid">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">WOLF PERFORMANCE • BARRIE / GTA</p>
-        <h1>Performance you can trust.</h1>
-        <p class="sub">
-          Tuning, diagnostics, maintenance, and phased build plans — designed for daily reliability and real gains.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn primary" href="#contact">Contact Us</a>
-          <a class="btn ghost" id="bookBtnHero" href="booking.html" >Book Now</a>
-        </div>
-
-        <div class="kpis">
-          <div class="kpi"><strong>OEM+</strong><span>Smooth drivability</span></div>
-          <div class="kpi"><strong>Data-led</strong><span>Logs & validation</span></div>
-          <div class="kpi"><strong>Clean work</strong><span>Transparent scope</span></div>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-media-inner">
+          <picture class="hero-poster">
+            <source type="image/avif" media="(max-aspect-ratio: 1/1)" srcset="assets/video/hero-poster-portrait.avif">
+            <source type="image/webp" media="(max-aspect-ratio: 1/1)" srcset="assets/video/hero-poster-portrait.webp">
+            <source type="image/avif" srcset="assets/video/hero-poster.avif">
+            <source type="image/webp" srcset="assets/video/hero-poster.webp">
+            <img src="assets/video/hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+          </picture>
+          <video muted loop playsinline preload="none" disablepictureinpicture tabindex="-1"
+            data-src-landscape="assets/video/hero-1080" data-src-portrait="assets/video/hero-portrait"></video>
         </div>
       </div>
-
-      <aside class="side-card reveal delay-1">
-        <div class="pill">Fast Response</div>
-        <h2>Tell us your car + goal.</h2>
-        <p class="muted">We’ll reply with a clear plan: scope, timeline, and next steps.</p>
-
-        <!-- Free backend later (Formspree). For now this is a placeholder. -->
-        <form class="form"
-      action="https://formsubmit.co/info@wolfperformance.ca"
-      method="POST">
-
-  <input type="hidden" name="_subject" value="New Website Consultation Request">
-  <input type="hidden" name="_captcha" value="false">
-
-  <label>Vehicle
-    <input name="vehicle" placeholder="2014 Mercedes E550" required />
-  </label>
-
-  <label>Goal
-    <input name="goal" placeholder="Stage 2+, cooling + downpipes" required />
-  </label>
-
-  <label>Contact
-    <input name="contact" placeholder="you@email.com or (555) 555-5555" required />
-  </label>
-
-  <button class="btn primary block" type="submit">
-    Continue
-  </button>
-
-</form>
-      </aside>
-    </div>
-  </section>
-<!-- SERVICES -->
-<section id="services" class="section reveal">
-  <div class="wrap">
-    
-    <div class="section-head">
-      <h2>Core Services</h2>
-      <p class="muted">Precision tuning, diagnostics, and performance-focused maintenance in Barrie.</p>
-    </div>
-
-    <div class="grid-3">
-
-      <article class="card reveal delay-1">
-        <h3>Performance Tuning</h3>
-        <p>Calibrated power engineered for daily reliability and measurable gains.</p>
-        <ul class="list">
-          <li>ECU remapping & optimization</li>
-          <li>TCU calibration (where supported)</li>
-          <li>Data logging & refinement</li>
-          <li>Phased performance roadmap</li>
-        </ul>
-      </article>
-
-      <article class="card reveal delay-2">
-        <h3>Advanced Diagnostics</h3>
-        <p>Structured testing and data-driven troubleshooting — no guesswork.</p>
-        <ul class="list">
-          <li>Full-system scanning</li>
-          <li>Live data monitoring</li>
-          <li>Boost & smoke testing</li>
-          <li>Electrical system validation</li>
-        </ul>
-      </article>
-
-      <article class="card reveal delay-3">
-        <h3>Performance Maintenance</h3>
-        <p>Maintenance strategies designed to protect tuned and modified vehicles.</p>
-        <ul class="list">
-          <li>Fluids & filter upgrades</li>
-          <li>Brake & suspension inspection</li>
-          <li>Cooling system optimization</li>
-          <li>Preventative service planning</li>
-        </ul>
-      </article>
-
-    </div>
-
-    <!-- AUTHORITY BUTTON (SEO + INTERNAL LINKING BOOST) -->
-    <div style="margin-top:40px; text-align:center;">
-      <p class="muted">
-        Learn how tuning, exhaust upgrades, diagnostics, and maintenance work together.
-      </p>
-      <a class="btn ghost" href="performance-auto-repair-barrie.html">
-        Read Our Complete Performance Guide
-      </a>
-    </div>
-
-  </div>
-</section>
-
-  <!-- WORK -->
-  <section id="work" class="section soft reveal">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Recent work</h2>
-        
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-sweep" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow" data-hero>Mobile ECU tuning · Toronto, the GTA &amp; Barrie</p>
+          <h1 id="hero-heading" data-hero><span class="line"><span class="li">Unlock the car</span></span> <span class="line"><span class="li">you already own<span class="dot">.</span></span></span> <span class="h1-sub"><span class="li">Pro ECU tuning, at your door.</span></span></h1>
+          <p class="hero-sub" data-hero>Sharper throttle, stronger mid-range and smoother power, calibrated at your home or work with professional-grade equipment. No drop-off. No waiting room.</p>
+          <div class="hero-ctas" data-hero>
+            <a class="btn btn-primary btn-lg" href="#quote">Get my quote</a>
+            <a class="btn btn-secondary btn-lg" href="tel:+14168392266">Call (416) 839-2266</a>
+          </div>
+          <p class="hero-note" data-hero><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span>No travel fee across Toronto, the GTA and Barrie</span></p>
+        </div>
+        <div class="hero-side" data-hero>
+          <div class="hero-mark"><picture><source type="image/webp" srcset="assets/wordmark-800.webp"><img src="assets/wordmark-800.png" alt="" width="800" height="296" decoding="async"></picture></div>
+        </div>
       </div>
+      <div class="hero-scroll" aria-hidden="true"></div>
+    </section>
 
-      <div class="scroll-wrap">
-        <div class="scroll-row">
-          <article class="scroll-card reveal delay-1">
-            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=1600&q=80" alt="Engine bay" />
-            <div class="scroll-meta">
-              <div class="title">Build Planning</div>
-              <div class="desc">Phased upgrades that make sense.</div>
+    <section class="trust-row" aria-label="Why drivers choose Wolf Performance">
+      <div class="container">
+        <ul class="trust-list trust-list--5">
+          <li data-reveal><a href="https://share.google/OvfHWgjiSA1blfuC3" target="_blank" rel="noopener noreferrer"><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg><span><b>5.0 on Google</b><span class="stars stars-sm" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span><small>7 reviews</small></span></a></li>
+          <li data-reveal><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span><b>We come to you</b><small>No travel fee across Toronto, the GTA and Barrie</small></span></li>
+          <li data-reveal><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg><span><b>Pro-grade equipment</b><small>15+ years of ECU tuning expertise</small></span></li>
+          <li data-reveal><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M3 12h4l2.5-5 4 10 2.5-5H21"/></svg><span><b>Health scan before every tune</b><small>Faults found before power is added</small></span></li>
+          <li data-reveal><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l7 3v5.5c0 4.4-3 8.2-7 9.5-4-1.3-7-5.1-7-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span><b>Worry-free tuning</b><small>Original map saved, back to stock anytime</small></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section changes" id="changes" aria-labelledby="changes-heading">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="kicker" data-reveal>What changes after a tune</p>
+            <h2 id="changes-heading" data-split>The car you thought you bought.</h2>
+          </div>
+          <p data-reveal>A well-made calibration is felt every time you press the pedal, not just at full throttle. This is what a good tune is designed to change.</p>
+        </div>
+        <div class="change-grid">
+          <article class="change-card" data-reveal>
+            <div class="change-media" data-img-reveal>
+              <picture>
+                <source type="image/avif" srcset="assets/img/brz-dusk-w-640.avif 640w, assets/img/brz-dusk-w-1024.avif 1024w, assets/img/brz-dusk-w-1440.avif 1440w, assets/img/brz-dusk-w-1600.avif 1600w, assets/img/brz-dusk-w-2400.avif 2400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <source type="image/webp" srcset="assets/img/brz-dusk-w-640.webp 640w, assets/img/brz-dusk-w-1024.webp 1024w, assets/img/brz-dusk-w-1440.webp 1440w, assets/img/brz-dusk-w-1600.webp 1600w, assets/img/brz-dusk-w-2400.webp 2400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <img src="assets/img/brz-dusk-w-1024.jpg" srcset="assets/img/brz-dusk-w-640.jpg 640w, assets/img/brz-dusk-w-1024.jpg 1024w, assets/img/brz-dusk-w-1440.jpg 1440w, assets/img/brz-dusk-w-1600.jpg 1600w, assets/img/brz-dusk-w-2400.jpg 2400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px" alt="Black Subaru BRZ by the waterfront at dusk" width="2400" height="1350" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="change-body">
+              <span class="change-num">01</span>
+              <h3>Sharper throttle response</h3>
+              <p>Less lag between your foot and the car. Throttle mapping is calibrated so response feels immediate and predictable.</p>
             </div>
           </article>
-
-          <article class="scroll-card reveal delay-2">
-            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1600&q=80" alt="Shop work" />
-            <div class="scroll-meta">
-              <div class="title">Shop Work</div>
-              <div class="desc">Clean installs. Clean results.</div>
+          <article class="change-card" data-reveal>
+            <div class="change-media" data-img-reveal>
+              <picture>
+                <source type="image/avif" srcset="assets/img/mercedes-v8-bay-w-640.avif 640w, assets/img/mercedes-v8-bay-w-1024.avif 1024w, assets/img/mercedes-v8-bay-w-1440.avif 1440w, assets/img/mercedes-v8-bay-w-1600.avif 1600w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <source type="image/webp" srcset="assets/img/mercedes-v8-bay-w-640.webp 640w, assets/img/mercedes-v8-bay-w-1024.webp 1024w, assets/img/mercedes-v8-bay-w-1440.webp 1440w, assets/img/mercedes-v8-bay-w-1600.webp 1600w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <img src="assets/img/mercedes-v8-bay-w-1024.jpg" srcset="assets/img/mercedes-v8-bay-w-640.jpg 640w, assets/img/mercedes-v8-bay-w-1024.jpg 1024w, assets/img/mercedes-v8-bay-w-1440.jpg 1440w, assets/img/mercedes-v8-bay-w-1600.jpg 1600w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px" alt="Mercedes V8 biturbo engine bay with the hood up" width="1600" height="900" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="change-body">
+              <span class="change-num">02</span>
+              <h3>Stronger mid-range pull</h3>
+              <p>The torque you use every day, merging onto the 401 or rolling on in third, is where a good calibration is felt most.</p>
             </div>
           </article>
-
-          <article class="scroll-card reveal delay-3">
-            <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1600&q=80" alt="Night shot" />
-            <div class="scroll-meta">
-              <div class="title">Performance</div>
-              <div class="desc">Power you can repeat.</div>
+          <article class="change-card" data-reveal>
+            <div class="change-media" data-img-reveal>
+              <picture>
+                <source type="image/avif" srcset="assets/img/mustang-rear-lights-w-640.avif 640w, assets/img/mustang-rear-lights-w-1024.avif 1024w, assets/img/mustang-rear-lights-w-1440.avif 1440w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <source type="image/webp" srcset="assets/img/mustang-rear-lights-w-640.webp 640w, assets/img/mustang-rear-lights-w-1024.webp 1024w, assets/img/mustang-rear-lights-w-1440.webp 1440w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <img src="assets/img/mustang-rear-lights-w-1024.jpg" srcset="assets/img/mustang-rear-lights-w-640.jpg 640w, assets/img/mustang-rear-lights-w-1024.jpg 1024w, assets/img/mustang-rear-lights-w-1440.jpg 1440w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px" alt="Black Ford Mustang with its tail lights glowing" width="1440" height="810" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="change-body">
+              <span class="change-num">03</span>
+              <h3>Smoother power delivery</h3>
+              <p>Power builds cleanly instead of arriving in a lump. OEM+ smooth at part throttle, not just strong at full boost.</p>
+            </div>
+          </article>
+          <article class="change-card" data-reveal>
+            <div class="change-media" data-img-reveal>
+              <picture>
+                <source type="image/avif" srcset="assets/img/mustang-mach1-road-w-640.avif 640w, assets/img/mustang-mach1-road-w-1024.avif 1024w, assets/img/mustang-mach1-road-w-1440.avif 1440w, assets/img/mustang-mach1-road-w-1600.avif 1600w, assets/img/mustang-mach1-road-w-2400.avif 2400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <source type="image/webp" srcset="assets/img/mustang-mach1-road-w-640.webp 640w, assets/img/mustang-mach1-road-w-1024.webp 1024w, assets/img/mustang-mach1-road-w-1440.webp 1440w, assets/img/mustang-mach1-road-w-1600.webp 1600w, assets/img/mustang-mach1-road-w-2400.webp 2400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px">
+                <img src="assets/img/mustang-mach1-road-w-1024.jpg" srcset="assets/img/mustang-mach1-road-w-640.jpg 640w, assets/img/mustang-mach1-road-w-1024.jpg 1024w, assets/img/mustang-mach1-road-w-1440.jpg 1440w, assets/img/mustang-mach1-road-w-1600.jpg 1600w, assets/img/mustang-mach1-road-w-2400.jpg 2400w" sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px" alt="Black Ford Mustang Mach 1 rolling on a tree-lined road" width="2400" height="1350" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="change-body">
+              <span class="change-num">04</span>
+              <h3>More confident overtakes</h3>
+              <p>Passing on a two-lane road or merging into fast traffic feels calmer when the car pulls cleanly through the gears.</p>
             </div>
           </article>
         </div>
+        <p class="changes-foot" data-reveal>How much each one changes depends on your car, fuel and supporting mods. We tell you what is realistic for your platform before any work.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- REVIEWS -->
-<section id="reviews" class="section reveal">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Trusted by Performance Drivers in Barrie</h2>
-      <p class="muted">Real feedback from customers who value precision, reliability, and measurable results.</p>
-    </div>
-
-    <div class="grid-3">
-
-      <article class="card reveal delay-1">
-        <p>
-          “Wolf Performance completely transformed my car. The power delivery is smooth,
-          responsive, and feels OEM — just significantly stronger.”
-        </p>
-        <p class="muted tiny" style="margin-top:10px;">— BMW Owner, Barrie</p>
-      </article>
-
-      <article class="card reveal delay-2">
-        <p>
-          “Clear communication, honest recommendations, and zero guesswork.
-          The tuning process was explained step by step.”
-        </p>
-        <p class="muted tiny" style="margin-top:10px;">— Audi S Owner, Ontario</p>
-      </article>
-
-      <article class="card reveal delay-3">
-        <p>
-          “Best part? The car drives better every day.
-          No harshness, no issues — just clean, refined performance.”
-        </p>
-        <p class="muted tiny" style="margin-top:10px;">— Mercedes Owner, GTA</p>
-      </article>
-
-    </div>
-
-    <div style="text-align:center; margin-top:30px;">
-      <a class="btn ghost" href="https://share.google/OvfHWgjiSA1blfuC3" target="_blank">
-        View All Google Reviews
-      </a>
-    </div>
-
-  </div>
-</section>
-<!-- CONTACT -->
-<section id="contact" class="section soft reveal">
-  <div class="wrap">
-
-    <!-- TWO COLUMN TOP -->
-    <div class="contact">
-
-      <!-- LEFT COLUMN -->
-      <div>
-        <h2>Book or request a quote.</h2>
-        <p class="muted">Fast response. Clear plan. Premium work.</p>
-
-        <div class="contact-grid">
-          <div class="mini">
-            <div class="mini-top">Email</div>
-            <div class="mini-bottom">
-              <a href="mailto:info@wolfperformance.ca">
-                info@wolfperformance.ca
-              </a>
-            </div>
+    <section class="section section-alt" id="why" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="kicker" data-reveal>Why mobile</p>
+            <h2 id="why-heading" data-split>Why mobile beats a shop.</h2>
           </div>
+          <p data-reveal>Same tools, same process, same logged results. Without the drive, the drop-off or the waiting room.</p>
+        </div>
+        <ol class="why-grid why-grid--4">
+          <li data-reveal><span class="why-num">01</span><h3>No drop-off, no waiting room</h3><p>We come to you, so the car never leaves your sight and your day keeps moving.</p></li>
+          <li data-reveal><span class="why-num">02</span><h3>Your driveway or your workplace</h3><p>Home, work or wherever the car is parked safely, across Toronto, the GTA and Barrie.</p></li>
+          <li data-reveal><span class="why-num">03</span><h3>15+ years of ECU tuning expertise</h3><p>Every car is logged before and after the flash, so the result is backed by data, not a feeling.</p></li>
+          <li data-reveal><span class="why-num">04</span><h3>No pressure on the day</h3><p>If the health scan finds something that should be fixed first, we tell you. No pressure to tune on the same day.</p></li>
+        </ol>
+        <nav class="cities cities--inline" aria-label="Where we come to" data-reveal>
+          <span class="cities-label">Where we come to</span>
+          <a href="ecu-tuning-toronto.html">Toronto</a>
+          <a href="mobile-car-tuning-scarborough.html">Scarborough</a>
+          <a href="mobile-car-tuning-mississauga.html">Mississauga</a>
+          <a href="mobile-car-tuning-brampton.html">Brampton</a>
+          <a href="mobile-car-tuning-markham.html">Markham</a>
+          <a href="mobile-car-tuning-vaughan.html">Vaughan</a>
+          <a href="performance-tuning-richmond-hill.html">Richmond Hill</a>
+          <a href="ecu-remap-newmarket-aurora.html">Newmarket &amp; Aurora</a>
+          <a href="ecu-remap-barrie.html">Barrie</a>
+          <a href="service-areas.html">All service areas</a>
+        </nav>
+      </div>
+    </section>
 
-          <div class="mini">
-            <div class="mini-top">Phone</div>
-            <div class="mini-bottom">
-              <a href="tel:+4168392266">
-                (416) 839-2266
-              </a>
-            </div>
+    <section class="section packages" id="packages" aria-labelledby="packages-heading">
+      <div class="container">
+        <div class="section-head section-head--split">
+          <div>
+            <p class="kicker" data-reveal>Tuning packages</p>
+            <h2 id="packages-heading" data-split>Choose your stage.</h2>
           </div>
-
-          <div class="mini">
-            <div class="mini-top">Location</div>
-            <div class="mini-bottom">
-              Barrie, Ontario
+          <p data-reveal>Every tune starts with a health scan and ends with a log. Clear starting prices, then an exact quote once we know your car.</p>
+        </div>
+        <div class="pkg-assures">
+          <p class="pkg-assure" data-reveal><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l7 3v5.5c0 4.4-3 8.2-7 9.5-4-1.3-7-5.1-7-9.5V6z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg><span><b>Worry-free tuning.</b> Your original factory map is saved before we write anything, so you can go back to stock if you ever need to.</span></p>
+          <p class="pkg-assure pkg-assure--travel" data-reveal><svg class="trust-ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg><span><b>No travel fee across Toronto, the GTA and Barrie.</b> We come to your home, work or driveway.</span></p>
+        </div>
+        <div class="pkg-grid">
+          <article class="pkg pkg--feature" data-reveal>
+            <p class="pkg-tag">ECU tune</p>
+            <h3>Stage 1</h3>
+            <p class="pkg-lead">Software-only calibration for your car as it sits. The everyday upgrade.</p>
+            <ul><li>Pre-tune health scan: full-system scan and live data</li><li>Original factory map saved before anything is written</li><li>Air-fuel, boost and ignition timing calibrated for your goal</li><li>Calibrated and flashed with professional-grade tools</li><li>Logged before and after the flash</li><li>Clear notes on exactly what changed</li></ul>
+            
+            <div class="pkg-foot">
+              <p class="pkg-price"><span class="pkg-price-val">From $999</span><span class="pkg-price-for">Everyday and common turbo cars</span><span class="pkg-price-alt"><b>Performance &amp; V8 from $1,499</b>BMW M, Mercedes-AMG, Audi RS and V8s</span><span class="pkg-price-note">CAD · final price depends on your car</span></p>
+              <a class="btn btn-primary" href="#quote" data-pick="Stage 1 ECU tune">Get my quote</a>
             </div>
+          </article>
+          <article class="pkg" data-reveal>
+            <p class="pkg-tag">ECU tune + supporting mods</p>
+            <h3>Stage 2</h3>
+            <p class="pkg-lead">A calibration built around the hardware on your car, for drivers who are already modified.</p>
+            <ul><li>Everything in Stage 1</li><li>Calibration matched to your intake, exhaust or intercooler</li><li>A plan for what to fit next, in the right order</li><li>Data logging and refinement</li></ul>
+            <p class="pkg-note">May require supporting hardware. Installs are by referral for now, and we calibrate around them.</p>
+            <div class="pkg-foot">
+              <p class="pkg-price"><span class="pkg-price-val">From $1,299</span><span class="pkg-price-note">CAD · final price depends on your car</span></p>
+              <a class="btn btn-secondary" href="#quote" data-pick="Stage 2 ECU tune">Get my quote</a>
+            </div>
+          </article>
+          <article class="pkg" data-reveal>
+            <p class="pkg-tag">Transmission</p>
+            <h3>TCU / gearbox tuning</h3>
+            <p class="pkg-lead">Gearbox calibration matched to the engine, so the driveline keeps up with the power.</p>
+            <ul><li>Shift logic and responsiveness</li><li>Clutch pressure management</li><li>Matched to your engine calibration</li><li>Logged to confirm the result</li></ul>
+            <p class="pkg-note">Available where the platform supports it.</p>
+            <div class="pkg-foot">
+              <p class="pkg-price"><span class="pkg-price-val">From $999</span><span class="pkg-price-note">CAD · final price depends on your car</span></p>
+              <a class="btn btn-secondary" href="#quote" data-pick="TCU / gearbox tuning">Get my quote</a>
+            </div>
+          </article>
+          <article class="pkg" data-reveal>
+            <p class="pkg-tag">Diagnostics</p>
+            <h3>Diagnostics &amp; health scan</h3>
+            <p class="pkg-lead">Know where your car stands, with or without a tune.</p>
+            <ul><li>Full-system scan with pro-grade scan tools</li><li>Live data review</li><li>Fault-code checks</li><li>Clear notes on anything that needs attention</li></ul>
+            <p class="pkg-note pkg-note--offer">The $99 health scan is credited toward any tune booked within 30 days.</p>
+            <div class="pkg-foot">
+              <p class="pkg-price"><span class="pkg-price-val">From $99</span><span class="pkg-price-note">CAD · final price depends on your car</span></p>
+              <a class="btn btn-secondary" href="#quote" data-pick="Diagnostics & health scan">Get my quote</a>
+            </div>
+          </article>
+        </div>
+        <article class="pkg-bundle" data-reveal>
+          <div class="pkg-bundle-copy">
+            <p class="pkg-tag">Bundle · Engine + gearbox</p>
+            <h3>Stage 1 + TCU</h3>
+            <p class="pkg-lead">Engine and gearbox calibrated together, so shifts are matched to the new power.</p>
           </div>
-        </div>
+          <div class="pkg-bundle-price">
+            <p class="pkg-price"><span class="pkg-price-val">From $1,799</span><span class="pkg-price-save">Save $199 on the base tier vs booking separately</span><span class="pkg-price-note">CAD · final price depends on your car</span></p>
+            <a class="btn btn-primary" href="#quote" data-pick="Stage 1 + TCU bundle">Get my quote</a>
+          </div>
+        </article>
+        <p class="pkg-foot-note" data-reveal>European, Japanese and domestic platforms. Tool support varies by ECU, so we confirm your car before anything is booked in.</p>
+      </div>
+    </section>
 
-        <div class="contact-actions">
-          <a class="btn primary" href="booking.html">
-            Book a Slot
-          </a>
-          <a class="btn ghost" href="#top">
-            Back to top
-          </a>
+    <section class="quote-band" id="quote" aria-labelledby="quote-heading">
+      <div class="container">
+        <div class="quote-head">
+          <p class="kicker" data-reveal>Quick quote</p>
+          <h2 id="quote-heading" data-reveal>Tell us the car. We&#8217;ll come to it.</h2>
+          <p data-reveal>Four fields, about 30 seconds. We reply during business hours with your price and next steps.</p>
+        </div>
+        <form class="quote-form" data-reveal action="https://formsubmit.co/info@wolfperformance.ca" method="POST">
+          <input type="hidden" name="_subject" value="Quick quote: Wolf Performance (mobile)">
+          <input type="hidden" name="_next" value="https://wolfperformance.ca/thank-you.html">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="form" value="Homepage quick quote">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="field">
+            <label for="q-vehicle">Vehicle</label>
+            <input id="q-vehicle" name="vehicle" type="text" required placeholder="Year / make / model">
+          </div>
+          <div class="field">
+            <label for="q-want">What you want</label>
+            <select id="q-want" name="service" required>
+              <option value="">Select…</option>
+              <option>Stage 1 ECU tune</option><option>Stage 2 ECU tune</option><option>TCU / gearbox tuning</option><option>Stage 1 + TCU bundle</option><option>Diagnostics &amp; health scan</option><option>Scan &amp; coding</option><option>Not sure: advise me</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="q-contact">Phone or email</label>
+            <input id="q-contact" name="contact" type="text" required autocomplete="tel" placeholder="Best way to reach you">
+          </div>
+          <div class="field">
+            <label for="q-area">Your city / area</label>
+            <input id="q-area" name="area" type="text" required list="q-areas" placeholder="e.g. Scarborough">
+            <datalist id="q-areas"><option value="Toronto"><option value="North York"><option value="Etobicoke"><option value="Scarborough"><option value="Mississauga"><option value="Brampton"><option value="Vaughan"><option value="Markham"><option value="Richmond Hill"><option value="Oakville"><option value="Pickering"><option value="Ajax"><option value="Newmarket"><option value="Aurora"><option value="Barrie"></datalist>
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit">Get my quote</button>
+          <p class="quote-note">We only use these details to reply to your request. <a href="privacy.html">Privacy</a> · Prefer to talk? <a href="tel:+14168392266">(416) 839-2266</a></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="process section-alt" id="how" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker" data-reveal>How mobile tuning works</p>
+          <h2 id="process-heading" data-split>Book. We come to you. Drive away tuned.</h2>
+        </div>
+        <div class="process-grid">
+          <div class="process-media" aria-hidden="true">
+            <div class="process-bar"><i></i></div>
+            <span class="process-count"><b>01</b> / 03</span>
+            <figure><picture>
+                <source type="image/avif" srcset="assets/img/m6-v10-bay-w-640.avif 640w, assets/img/m6-v10-bay-w-1024.avif 1024w, assets/img/m6-v10-bay-w-1440.avif 1440w" sizes="(max-width: 900px) 100vw, 56vw">
+                <source type="image/webp" srcset="assets/img/m6-v10-bay-w-640.webp 640w, assets/img/m6-v10-bay-w-1024.webp 1024w, assets/img/m6-v10-bay-w-1440.webp 1440w" sizes="(max-width: 900px) 100vw, 56vw">
+                <img src="assets/img/m6-v10-bay-w-1024.jpg" srcset="assets/img/m6-v10-bay-w-640.jpg 640w, assets/img/m6-v10-bay-w-1024.jpg 1024w, assets/img/m6-v10-bay-w-1440.jpg 1440w" sizes="(max-width: 900px) 100vw, 56vw" alt="" width="1440" height="810" loading="lazy" decoding="async">
+              </picture><figcaption>Book</figcaption></figure>
+            <figure><picture>
+                <source type="image/avif" srcset="assets/img/calmap-w-640.avif 640w, assets/img/calmap-w-1024.avif 1024w, assets/img/calmap-w-1600.avif 1600w, assets/img/calmap-w-2400.avif 2400w" sizes="(max-width: 900px) 100vw, 56vw">
+                <source type="image/webp" srcset="assets/img/calmap-w-640.webp 640w, assets/img/calmap-w-1024.webp 1024w, assets/img/calmap-w-1600.webp 1600w, assets/img/calmap-w-2400.webp 2400w" sizes="(max-width: 900px) 100vw, 56vw">
+                <img src="assets/img/calmap-w-1024.jpg" srcset="assets/img/calmap-w-640.jpg 640w, assets/img/calmap-w-1024.jpg 1024w, assets/img/calmap-w-1600.jpg 1600w, assets/img/calmap-w-2400.jpg 2400w" sizes="(max-width: 900px) 100vw, 56vw" alt="" width="2400" height="1500" loading="lazy" decoding="async">
+              </picture><figcaption>We come to you</figcaption></figure>
+            <figure><video class="lazy-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/drive-away-poster.webp" data-lazy-video="assets/video/drive-away" width="1280" height="720"></video><figcaption>Drive away tuned</figcaption></figure>
+          </div>
+          <ol class="steps">
+            <li class="step" data-step="0">
+              <div class="step-img"><picture>
+                  <source type="image/avif" srcset="assets/img/m6-v10-bay-w-640.avif 640w, assets/img/m6-v10-bay-w-1024.avif 1024w, assets/img/m6-v10-bay-w-1440.avif 1440w" sizes="100vw">
+                  <source type="image/webp" srcset="assets/img/m6-v10-bay-w-640.webp 640w, assets/img/m6-v10-bay-w-1024.webp 1024w, assets/img/m6-v10-bay-w-1440.webp 1440w" sizes="100vw">
+                  <img src="assets/img/m6-v10-bay-w-1024.jpg" srcset="assets/img/m6-v10-bay-w-640.jpg 640w, assets/img/m6-v10-bay-w-1024.jpg 1024w, assets/img/m6-v10-bay-w-1440.jpg 1440w" sizes="100vw" alt="BMW M6 V10 engine bay with the hood up" width="1440" height="810" loading="lazy" decoding="async">
+                </picture></div>
+              <p class="step-num">01</p>
+              <h3>Book</h3>
+              <p>Send your car, goal and area with the quick quote form, or call (416) 839-2266. You get the scope, timing and price before anything is booked in.</p>
+            </li>
+            <li class="step" data-step="1">
+              <div class="step-img"><picture>
+                  <source type="image/avif" srcset="assets/img/calmap-w-640.avif 640w, assets/img/calmap-w-1024.avif 1024w, assets/img/calmap-w-1600.avif 1600w, assets/img/calmap-w-2400.avif 2400w" sizes="100vw">
+                  <source type="image/webp" srcset="assets/img/calmap-w-640.webp 640w, assets/img/calmap-w-1024.webp 1024w, assets/img/calmap-w-1600.webp 1600w, assets/img/calmap-w-2400.webp 2400w" sizes="100vw">
+                  <img src="assets/img/calmap-w-1024.jpg" srcset="assets/img/calmap-w-640.jpg 640w, assets/img/calmap-w-1024.jpg 1024w, assets/img/calmap-w-1600.jpg 1600w, assets/img/calmap-w-2400.jpg 2400w" sizes="100vw" alt="Calibration map on screen during an ECU remap" width="2400" height="1500" loading="lazy" decoding="async">
+                </picture></div>
+              <p class="step-num">02</p>
+              <h3>We come to you</h3>
+              <p>We arrive at your home, work or driveway with professional-grade tuning and diagnostic equipment. A pre-tune health scan and live data come first, so faults are found before power is added.</p>
+            </li>
+            <li class="step" data-step="2">
+              <div class="step-img"><video class="lazy-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/drive-away-poster.webp" data-lazy-video="assets/video/drive-away" width="1280" height="720"></video></div>
+              <p class="step-num">03</p>
+              <h3>Drive away tuned</h3>
+              <p>Your calibration is written for your car, your fuel and your goal, then logged to confirm the result. You get clear notes on exactly what changed.</p>
+            </li>
+          </ol>
         </div>
       </div>
+    </section>
 
-      <!-- RIGHT COLUMN -->
-      <div class="side-card reveal delay-1">
-        <h3>Hours</h3>
-        <p class="muted">
-          Mon–Sat 9:30–7:30 • Sun by appointment
+    <section class="gallery-band" id="gallery" aria-labelledby="gallery-heading">
+      <div class="container">
+        <div class="gb-head">
+          <p class="kicker" data-reveal>The cars</p>
+          <h2 id="gallery-heading" data-split>Built for drivers who notice.</h2>
+        </div>
+        <div class="gb-grid">
+          <figure class="gb-item gb-item--video" data-reveal><video class="lazy-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/meet-aerial-poster.webp" data-lazy-video="assets/video/meet-aerial" width="1280" height="720"></video></figure>
+          <figure class="gb-item" data-reveal><picture>
+              <source type="image/avif" srcset="assets/img/miata-na-sunset-s-480.avif 480w, assets/img/miata-na-sunset-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <source type="image/webp" srcset="assets/img/miata-na-sunset-s-480.webp 480w, assets/img/miata-na-sunset-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <img src="assets/img/miata-na-sunset-s-800.jpg" srcset="assets/img/miata-na-sunset-s-480.jpg 480w, assets/img/miata-na-sunset-s-800.jpg 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px" alt="Dark green Mazda Miata rolling on the highway at sunset" width="800" height="800" loading="lazy" decoding="async">
+            </picture></figure>
+          <figure class="gb-item" data-reveal><picture>
+              <source type="image/avif" srcset="assets/img/rs7-red-rear-s-480.avif 480w, assets/img/rs7-red-rear-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <source type="image/webp" srcset="assets/img/rs7-red-rear-s-480.webp 480w, assets/img/rs7-red-rear-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <img src="assets/img/rs7-red-rear-s-800.jpg" srcset="assets/img/rs7-red-rear-s-480.jpg 480w, assets/img/rs7-red-rear-s-800.jpg 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px" alt="Red Audi RS7 seen from behind" width="800" height="800" loading="lazy" decoding="async">
+            </picture></figure>
+          <figure class="gb-item" data-reveal><picture>
+              <source type="image/avif" srcset="assets/img/sti-brembo-s-480.avif 480w, assets/img/sti-brembo-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <source type="image/webp" srcset="assets/img/sti-brembo-s-480.webp 480w, assets/img/sti-brembo-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <img src="assets/img/sti-brembo-s-800.jpg" srcset="assets/img/sti-brembo-s-480.jpg 480w, assets/img/sti-brembo-s-800.jpg 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px" alt="Blue Subaru WRX STI wheel with red Brembo brakes" width="800" height="800" loading="lazy" decoding="async">
+            </picture></figure>
+          <figure class="gb-item" data-reveal><picture>
+              <source type="image/avif" srcset="assets/img/rs3-front-s-480.avif 480w, assets/img/rs3-front-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <source type="image/webp" srcset="assets/img/rs3-front-s-480.webp 480w, assets/img/rs3-front-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <img src="assets/img/rs3-front-s-800.jpg" srcset="assets/img/rs3-front-s-480.jpg 480w, assets/img/rs3-front-s-800.jpg 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px" alt="Grey Audi RS3 hatchback, front three-quarter view" width="800" height="800" loading="lazy" decoding="async">
+            </picture></figure>
+          <figure class="gb-item" data-reveal><picture>
+              <source type="image/avif" srcset="assets/img/porsche-911-dusk-s-480.avif 480w, assets/img/porsche-911-dusk-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <source type="image/webp" srcset="assets/img/porsche-911-dusk-s-480.webp 480w, assets/img/porsche-911-dusk-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <img src="assets/img/porsche-911-dusk-s-800.jpg" srcset="assets/img/porsche-911-dusk-s-480.jpg 480w, assets/img/porsche-911-dusk-s-800.jpg 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px" alt="Classic Porsche 911 in profile at golden hour" width="800" height="800" loading="lazy" decoding="async">
+            </picture></figure>
+          <figure class="gb-item" data-reveal><picture>
+              <source type="image/avif" srcset="assets/img/ferrari-cal-t-s-480.avif 480w, assets/img/ferrari-cal-t-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <source type="image/webp" srcset="assets/img/ferrari-cal-t-s-480.webp 480w, assets/img/ferrari-cal-t-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
+              <img src="assets/img/ferrari-cal-t-s-800.jpg" srcset="assets/img/ferrari-cal-t-s-480.jpg 480w, assets/img/ferrari-cal-t-s-800.jpg 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px" alt="Silver Ferrari California T" width="800" height="800" loading="lazy" decoding="async">
+            </picture></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-band" id="reviews" aria-labelledby="reviews-heading" data-visible-rating="5.0" data-visible-review-count="7">
+      <div class="reviews-bg" aria-hidden="true"><picture>
+                <source type="image/avif" srcset="assets/img/cls-studio-w-640.avif 640w, assets/img/cls-studio-w-1024.avif 1024w, assets/img/cls-studio-w-1440.avif 1440w, assets/img/cls-studio-w-1600.avif 1600w, assets/img/cls-studio-w-2400.avif 2400w" sizes="100vw">
+                <source type="image/webp" srcset="assets/img/cls-studio-w-640.webp 640w, assets/img/cls-studio-w-1024.webp 1024w, assets/img/cls-studio-w-1440.webp 1440w, assets/img/cls-studio-w-1600.webp 1600w, assets/img/cls-studio-w-2400.webp 2400w" sizes="100vw">
+                <img src="assets/img/cls-studio-w-1024.jpg" srcset="assets/img/cls-studio-w-640.jpg 640w, assets/img/cls-studio-w-1024.jpg 1024w, assets/img/cls-studio-w-1440.jpg 1440w, assets/img/cls-studio-w-1600.jpg 1600w, assets/img/cls-studio-w-2400.jpg 2400w" sizes="100vw" alt="" width="2400" height="1350" loading="lazy" decoding="async">
+              </picture></div>
+      <div class="container">
+        <p class="kicker" data-reveal>Google reviews</p>
+        <div class="reviews-top">
+          <div class="score-big" data-reveal aria-hidden="true">5.0</div>
+          <div class="score-meta" data-reveal>
+            <div class="stars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <h2 id="reviews-heading">Rated 5.0 on Google</h2>
+            <p>Based on <strong>7</strong> public Google reviews for Wolf Performance.</p>
+          </div>
+          <a class="btn btn-secondary" data-reveal href="https://share.google/OvfHWgjiSA1blfuC3" target="_blank" rel="noopener noreferrer">Read our Google reviews</a>
+        </div>
+        <div class="quotes">
+          <blockquote class="quote" data-reveal>
+            <div class="stars stars-sm" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <p>“Great service, faie price, and honest work. My car runs smoother than ever- highly recommended”</p>
+            <cite>Google review</cite>
+          </blockquote>
+          <blockquote class="quote" data-reveal>
+            <div class="stars stars-sm" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <p>“Amazing service! Wolf Performance fixed my transmission fast and explained everything clearly. Honest shop I’ll definitely return to”</p>
+            <cite>Google review</cite>
+          </blockquote>
+          <blockquote class="quote" data-reveal>
+            <div class="stars stars-sm" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <p>“Go to shop!! Best in town and know how to work with german cars”</p>
+            <cite>Google review</cite>
+          </blockquote>
+        </div>
+        <p class="reviews-cta" data-reveal>
+          <a class="card-link" href="https://share.google/OvfHWgjiSA1blfuC3" target="_blank" rel="noopener noreferrer">See all reviews on Google →</a>
         </p>
+      </div>
+    </section>
 
-        <h3 style="margin-top:14px;">Follow us</h3>
-        <p class="muted">
-          See our latest work and updates.
-        </p>
-
-        <div class="social" aria-label="Social links">
-          <a class="social-link"
-             href="https://www.instagram.com/wolfmotoperformance.ca/"
-             target="_blank"
-             rel="noreferrer"
-             aria-label="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4A3.8 3.8 0 0 0 20 16.2V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2Zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2Zm4.7-2.3a.9.9 0 1 1-.9.9.9.9 0 0 1 .9-.9Z"/>
-            </svg>
-            <span>Instagram</span>
-          </a>
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+      <div class="container faq-wrap">
+        <div class="section-head">
+          <p class="kicker" data-reveal>FAQ</p>
+          <h2 id="faq-heading" data-split>Before you book.</h2>
+          <p data-reveal>Straight answers on the visit, safety, power and price.</p>
+        </div>
+        <div class="faq">
+          <details data-reveal>
+            <summary>Do you really come to me?</summary>
+            <p>Yes. Wolf Performance is a mobile service. We come to your home, your workplace or wherever the car is parked safely across Toronto, the GTA and Barrie, so there is no drop-off and no waiting room.</p>
+          </details>
+          <details data-reveal>
+            <summary>Is ECU tuning safe for daily driving?</summary>
+            <p>Done properly, yes. We prioritize reliability and thermal management, confirm the car is healthy first, and validate the result with logs.</p>
+          </details>
+          <details data-reveal>
+            <summary>Can I go back to stock?</summary>
+            <p>Yes. Your original factory map is saved before we write anything, so the car can be returned to stock if you ever need to.</p>
+          </details>
+          <details data-reveal>
+            <summary>How much power will I gain?</summary>
+            <p>It depends on the car, the engine, the fuel you run and its condition, so we don't quote a generic number. We review your car first and tell you honestly what is realistic before any work is done. Your original factory map is saved, so you can always go back to stock.</p>
+          </details>
+          <details data-reveal>
+            <summary>How much does it cost?</summary>
+            <p>Starting prices (CAD): Stage 1 from $999; Stage 1 for performance and V8 cars from $1,499; Stage 2 from $1,299; TCU / gearbox tuning from $999; the Stage 1 + TCU bundle from $1,799; diagnostics and health scan from $99. The $99 health scan is credited toward any tune booked within 30 days. No travel fee across Toronto, the GTA and Barrie. Your exact price depends on the platform and what you want, so send your car through the <a href="#quote">quick quote form</a> or call <a href="tel:+14168392266">(416) 839-2266</a> and we quote for your car before anything is booked in.</p>
+          </details>
         </div>
       </div>
+    </section>
 
-    </div>
-
-    <!-- FULL WIDTH MAP + REVIEWS BELOW -->
-    <div class="map-card reveal delay-2" style="margin-top:40px;">
-
-      <!-- GOOGLE REVIEW BADGE -->
-      <div style="
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        margin-bottom:18px;
-        padding:14px 18px;
-        border:1px solid rgba(255,255,255,.10);
-        border-radius:18px;
-        background:rgba(255,255,255,.03);
-      ">
-
-        <div style="font-weight:650;">
-          <span style="color:#ff1e1e;">4.8 ★</span>
-          <span style="color:rgba(245,247,251,.65); font-weight:500;">
-            • 25 Google Reviews
-          </span>
+    <section class="closing closing--split" aria-labelledby="closing-heading">
+      <div class="closing-bg" aria-hidden="true"><picture>
+                <source media="(max-width: 900px)" type="image/avif" srcset="assets/img/mercedes-e-flames-p-720.avif 720w, assets/img/mercedes-e-flames-p-1080.avif 1080w" sizes="100vw">
+                <source media="(max-width: 900px)" type="image/webp" srcset="assets/img/mercedes-e-flames-p-720.webp 720w, assets/img/mercedes-e-flames-p-1080.webp 1080w" sizes="100vw">
+                <source media="(max-width: 900px)" srcset="assets/img/mercedes-e-flames-p-720.jpg 720w, assets/img/mercedes-e-flames-p-1080.jpg 1080w" sizes="100vw">
+                <source type="image/avif" srcset="assets/img/mercedes-e-flames-closing-t-480.avif 480w, assets/img/mercedes-e-flames-closing-t-800.avif 800w, assets/img/mercedes-e-flames-closing-t-1080.avif 1080w, assets/img/mercedes-e-flames-closing-t-1200.avif 1200w, assets/img/mercedes-e-flames-closing-t-1600.avif 1600w" sizes="(max-width: 900px) 100vw, 56vw">
+                <source type="image/webp" srcset="assets/img/mercedes-e-flames-closing-t-480.webp 480w, assets/img/mercedes-e-flames-closing-t-800.webp 800w, assets/img/mercedes-e-flames-closing-t-1080.webp 1080w, assets/img/mercedes-e-flames-closing-t-1200.webp 1200w, assets/img/mercedes-e-flames-closing-t-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 56vw">
+                <img src="assets/img/mercedes-e-flames-closing-t-1080.jpg" srcset="assets/img/mercedes-e-flames-closing-t-480.jpg 480w, assets/img/mercedes-e-flames-closing-t-800.jpg 800w, assets/img/mercedes-e-flames-closing-t-1080.jpg 1080w, assets/img/mercedes-e-flames-closing-t-1200.jpg 1200w, assets/img/mercedes-e-flames-closing-t-1600.jpg 1600w" sizes="(max-width: 900px) 100vw, 56vw" alt="" width="1600" height="2000" loading="lazy" decoding="async">
+              </picture></div>
+      <div class="container">
+        <p class="kicker" data-reveal>Ready when you are</p>
+        <h2 id="closing-heading" data-split>Your car has more to give.</h2>
+        <p data-reveal>We come to you, with no travel fee across Toronto, the GTA and Barrie. Tell us the car and we will tell you what it can do.</p>
+        <div class="hero-ctas" data-reveal>
+          <a class="btn btn-primary btn-lg" href="#quote">Get my quote</a>
+          <a class="btn btn-secondary btn-lg" href="tel:+14168392266">Call (416) 839-2266</a>
         </div>
-
-        <a href="https://share.google/OvfHWgjiSA1blfuC3"
-           target="_blank"
-           rel="noreferrer"
-           class="btn ghost"
-           style="padding:8px 14px; font-size:13px;">
-           View Reviews
-        </a>
+        <div class="closing-details" data-reveal>
+          <div><b>Phone</b><a href="tel:+14168392266">(416) 839-2266</a></div>
+          <div><b>Email</b><a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a></div>
+          <div><b>Service area</b>Toronto, the GTA &amp; Barrie</div>
+          <div><b>Hours</b>Mon–Sat 9:30–7:30</div>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <h3>Find us</h3>
-
-      <div class="map-embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2851.8849051570437!2d-79.69705242401581!3d44.37395367107706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882abd5711ffbb45%3A0xa3dc24daf41a54e6!2sWOLF%20PERFORMANCE!5e0!3m2!1sen!2sca!4v1771791529833!5m2!1sen!2sca"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-          title="Wolf Performance Barrie Location">
-        </iframe>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <picture><source type="image/webp" srcset="assets/wordmark-nav.webp"><img src="assets/wordmark-nav.png" alt="Wolf Performance" width="320" height="137" loading="lazy" decoding="async"></picture>
+          <p>Mobile ECU tuning, diagnostics and coding. We come to you across Toronto, the GTA and Barrie.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Mobile service</h4>
+          <a href="index.html#how">How it works</a>
+          <a href="index.html#why">Why mobile</a>
+          <a href="ecu-remap-barrie.html">ECU remap — Barrie</a>
+          <a href="performance-auto-repair-barrie.html">Diagnostics &amp; services — Barrie</a>
+          <a href="booking.html">Book a visit</a>
+        </div>
+        <div class="footer-col">
+          <h4>Where we come to</h4>
+          <a href="ecu-tuning-toronto.html">Toronto</a>
+          <a href="mobile-car-tuning-scarborough.html">Scarborough</a>
+          <a href="mobile-car-tuning-mississauga.html">Mississauga</a>
+          <a href="mobile-car-tuning-vaughan.html">Vaughan</a>
+          <a href="mobile-car-tuning-markham.html">Markham</a>
+          <a href="ecu-remap-barrie.html">Barrie</a>
+          <a href="service-areas.html">All service areas</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:+14168392266">(416) 839-2266</a>
+          <a href="mailto:info@wolfperformance.ca">info@wolfperformance.ca</a>
+          <p>Mobile — we come to you</p>
+          <p>Mon–Sat 9:30–7:30 · Sun by appointment</p>
+          <a href="https://www.instagram.com/wolfmotoperformance.ca/" rel="noopener noreferrer" target="_blank">Instagram @wolfmotoperformance.ca</a>
+          <a href="https://share.google/OvfHWgjiSA1blfuC3" rel="noopener noreferrer" target="_blank">Google reviews</a>
+        </div>
       </div>
-
-    </div>
-
-  </div>
-</section>
-
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <div class="muted tiny">© <span id="year"></span> Wolf Performance. All rights reserved.</div>
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
+      <div class="footer-mark" aria-hidden="true"><picture><source type="image/webp" srcset="assets/wordmark-800.webp 800w, assets/wordmark-1600.webp 1600w" sizes="(max-width: 1320px) 92vw, 1224px"><img src="assets/wordmark-1600.png" srcset="assets/wordmark-800.png 800w, assets/wordmark-1600.png 1600w" sizes="(max-width: 1320px) 92vw, 1224px" alt="" width="1600" height="593" loading="lazy" decoding="async"></picture></div>
+      <div class="footer-bottom">
+        <span>© 2026 Wolf Performance. All rights reserved. · <a href="privacy.html">Privacy</a></span>
+        <span class="footer-news">Mobile across Toronto, the GTA &amp; Barrie</span>
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
+  <nav class="mobile-cta-bar" aria-label="Quick actions">
+    <a class="mobile-cta-call" href="tel:+14168392266">Call</a>
+    <a class="mobile-cta-book" href="#quote">Get my quote</a>
+  </nav>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/vendor/SplitText.min.js" defer></script>
+  <script src="assets/vendor/lenis.min.js" defer></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
