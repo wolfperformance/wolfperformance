@@ -887,3 +887,8 @@ h4, .info-card h3, .statement-meta dd small { word-spacing: normal; }
   .closing--split .closing-details { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; }
   .closing--split .hero-ctas { flex-wrap: wrap; }
 }
+
+/* City field (select + "Other city" text input) */
+.area-field [hidden] { display: none !important; }
+.area-other { display: flex; flex-direction: column; gap: 10px; }
+.area-select:not([hidden]) + .area-other:not([hidden]) { margin-top: 10px; }

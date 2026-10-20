@@ -173,10 +173,18 @@
                 </select>
               </div>
             </div>
+            <div class="field area-field" data-area-field>
+              <label class="area-sel-label" for="area-sel" hidden>Your city / area</label>
+              <select id="area-sel" class="area-select" hidden disabled aria-controls="area-other-wrap"><option value="" selected disabled>Choose your city</option><optgroup label="Toronto"><option>Toronto</option><option>North York</option><option>Etobicoke</option><option>Scarborough</option></optgroup><optgroup label="Peel &amp; Halton"><option>Mississauga</option><option>Brampton</option><option>Oakville</option><option>Burlington</option><option>Milton</option></optgroup><optgroup label="York Region"><option>Vaughan</option><option>Markham</option><option>Richmond Hill</option><option>Newmarket</option><option>Aurora</option></optgroup><optgroup label="Durham"><option>Pickering</option><option>Ajax</option><option>Whitby</option><option>Oshawa</option></optgroup><optgroup label="Barrie, Simcoe &amp; Georgian Bay"><option>Barrie</option><option>Orillia</option><option>Collingwood</option><option>Midland</option><option>Penetanguishene</option></optgroup><optgroup label="Hamilton, Niagara, Waterloo &amp; Kawarthas"><option>Hamilton</option><option>St. Catharines / Niagara</option><option>Kitchener-Waterloo</option><option>Cambridge</option><option>Guelph</option><option>Peterborough</option></optgroup><option value="__other">Other city (type it)</option></select>
+              <div class="area-other" id="area-other-wrap">
+                <label class="area-text-label" for="area" data-js-label="Your city">Your city / area</label>
+                <input id="area" name="area" type="text" required autocomplete="address-level2" list="area-list" placeholder="e.g. Scarborough">
+                <datalist id="area-list"><option value="Toronto"><option value="North York"><option value="Etobicoke"><option value="Scarborough"><option value="Mississauga"><option value="Brampton"><option value="Oakville"><option value="Burlington"><option value="Milton"><option value="Vaughan"><option value="Markham"><option value="Richmond Hill"><option value="Newmarket"><option value="Aurora"><option value="Pickering"><option value="Ajax"><option value="Whitby"><option value="Oshawa"><option value="Barrie"><option value="Orillia"><option value="Collingwood"><option value="Midland"><option value="Penetanguishene"><option value="Hamilton"><option value="St. Catharines / Niagara"><option value="Kitchener-Waterloo"><option value="Cambridge"><option value="Guelph"><option value="Peterborough"></datalist>
+              </div>
+            </div>
             <div class="field">
-              <label for="address">Your address / area for the visit</label>
-              <input id="address" name="visit_address" type="text" required autocomplete="street-address" list="areas" placeholder="Street address, or your area (e.g. Scarborough)">
-              <datalist id="areas"><option value="Toronto"><option value="North York"><option value="Etobicoke"><option value="Scarborough"><option value="Mississauga"><option value="Brampton"><option value="Vaughan"><option value="Markham"><option value="Richmond Hill"><option value="Oakville"><option value="Pickering"><option value="Ajax"><option value="Newmarket"><option value="Aurora"><option value="Barrie"></datalist>
+              <label for="address">Street address or nearest intersection (optional)</label>
+              <input id="address" name="visit_address" type="text" autocomplete="street-address" placeholder="Where the car will be parked">
             </div>
             <div class="field">
               <label for="spot">Where will the car be?</label>
@@ -221,6 +229,9 @@
           <a href="mobile-car-tuning-vaughan.html">Vaughan</a>
           <a href="mobile-car-tuning-markham.html">Markham</a>
           <a href="ecu-remap-barrie.html">Barrie</a>
+          <a href="car-tuning-orillia.html">Orillia</a>
+          <a href="ecu-tuning-collingwood.html">Collingwood</a>
+          <a href="mobile-car-tuning-midland.html">Midland</a>
           <a href="service-areas.html">All service areas</a>
         </div>
         <div class="footer-col">

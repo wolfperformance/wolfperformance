@@ -49,6 +49,26 @@
     });
   });
 
+  /* ---------- City field: select of all areas + "Other city (type it)" -> text input.
+     Without JS the text input (name="area") is the field. With JS exactly one enabled control carries name="area". ---------- */
+  d.querySelectorAll('[data-area-field]').forEach(function (f) {
+    var sel = f.querySelector('select'), selLabel = f.querySelector('.area-sel-label'),
+        wrap = f.querySelector('.area-other'), txt = wrap && wrap.querySelector('input'), txtLabel = wrap && wrap.querySelector('label');
+    if (!sel || !txt) return;
+    sel.hidden = false; sel.disabled = false; if (selLabel) selLabel.hidden = false;
+    if (txtLabel && txtLabel.getAttribute('data-js-label')) txtLabel.textContent = txtLabel.getAttribute('data-js-label');
+    txt.removeAttribute('list');
+    function sync(focus) {
+      var other = sel.value === '__other';
+      wrap.hidden = !other;
+      sel.setAttribute('aria-expanded', other ? 'true' : 'false');
+      if (other) { sel.removeAttribute('name'); sel.required = false; txt.name = 'area'; txt.required = true; txt.disabled = false; if (focus) txt.focus(); }
+      else { sel.name = 'area'; sel.required = true; txt.removeAttribute('name'); txt.required = false; txt.disabled = true; }
+    }
+    sel.addEventListener('change', function () { sync(true); });
+    sync(false);
+  });
+
   /* ---------- Header state + mobile bar ---------- */
   var bar = d.querySelector('.mobile-cta-bar');
   var heroCtas = d.querySelector('.hero .hero-ctas');
