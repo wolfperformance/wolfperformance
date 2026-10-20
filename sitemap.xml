@@ -6,12 +6,27 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://wolfperformance.ca/audi-vw-tuning-toronto.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wolfperformance.ca/bmw-tuning-gta.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://wolfperformance.ca/booking.html</loc>
     <lastmod>2026-10-10</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://wolfperformance.ca/car-tuning-burlington.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wolfperformance.ca/car-tuning-by-brand.html</loc>
     <lastmod>2026-10-10</lastmod>
     <priority>0.7</priority>
   </url>
@@ -32,6 +47,16 @@
   </url>
   <url>
     <loc>https://wolfperformance.ca/car-tuning-whitby-oshawa.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wolfperformance.ca/chevrolet-corvette-camaro-tuning.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wolfperformance.ca/dodge-ram-tuning-gta.html</loc>
     <lastmod>2026-10-10</lastmod>
     <priority>0.7</priority>
   </url>
@@ -89,6 +114,16 @@
     <loc>https://wolfperformance.ca/ecu-tuning-toronto.html</loc>
     <lastmod>2026-10-10</lastmod>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://wolfperformance.ca/ford-tuning-toronto.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wolfperformance.ca/mercedes-amg-tuning-toronto.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://wolfperformance.ca/mobile-car-tuning-brampton.html</loc>

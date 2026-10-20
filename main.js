@@ -126,6 +126,17 @@
     };
     evs.forEach(function (n) { w.addEventListener(n, fire, { passive: true, capture: true, once: true }); });
   }
+  // Really on screen for the user: in the viewport, rendered, and not faded out (e.g. a cross-faded process figure).
+  function isShown(v) {
+    if (!v.isConnected) return false;
+    var r = v.getBoundingClientRect();
+    if (r.width === 0 || r.height === 0 || r.bottom <= 0 || r.top >= (w.innerHeight || 800)) return false;
+    for (var e = v; e && e !== d.body; e = e.parentElement) {
+      var cs = w.getComputedStyle(e);
+      if (cs.display === 'none' || cs.visibility === 'hidden' || parseFloat(cs.opacity) < 0.05) return false;
+    }
+    return true;
+  }
   function robustPlay(v) {
     if (v.__robust) { tryPlay(v); return; }
     v.__robust = true;
@@ -134,28 +145,31 @@
     onFirstInteraction(v);
     tryPlay(v);
     setTimeout(function () { if (v.paused || v.currentTime === 0) kick(); }, 1500);
-    // Frame watchdog: if playback claims to run but no frame was presented for a while, restart it.
+    // Watchdog (every 2s, only while the video is really visible):
+    // - paused although it should run (Safari pauses muted loops it considers hidden, or a rejected play()) -> play again
+    // - playhead stuck -> nudge one frame forward and play
+    // - hero only: time runs but no frame is presented (a frozen picture) -> pause + play to rebuild it.
+    // It never leaves a video paused: it only pauses immediately before a play() call.
+    var last = 0, lastT = -1;
     if ('requestVideoFrameCallback' in v) {
-      var last = 0, lastT = -1;
       var onFrame = function () { last = Date.now(); v.requestVideoFrameCallback(onFrame); };
       v.requestVideoFrameCallback(onFrame);
-      setInterval(function () {
-        if (d.hidden || v.paused || v.__wantPause || v.readyState < 1) { lastT = -1; return; }
-        var r = v.getBoundingClientRect();
-        if (r.bottom <= 0 || r.top >= (w.innerHeight || 800) || r.width === 0) { last = Date.now(); lastT = -1; return; }
-        var noFrames = last && Date.now() - last > 2000 && v.readyState >= 3;
-        var stalled = lastT >= 0 && lastT === v.currentTime;
-        if (noFrames || stalled) {
-          last = Date.now();
-          // A decoder stuck on one frame: nudge the playhead a frame forward, then restart playback.
-          if (stalled && v.duration && isFinite(v.duration)) { try { v.currentTime = (v.currentTime + 0.04) % v.duration; } catch (e) {} }
-          v.pause(); tryPlay(v);
-        }
-        lastT = v.currentTime;
-      }, 2000);
     }
+    setInterval(function () {
+      if (d.hidden || REC || v.__wantPause || v.readyState < 1 || !isShown(v)) { last = Date.now(); lastT = -1; return; }
+      if (v.paused) { tryPlay(v); lastT = -1; return; }
+      var stalled = lastT >= 0 && lastT === v.currentTime;
+      var noFrames = v.__hero && last && Date.now() - last > 2500 && v.readyState >= 3;
+      if (stalled || noFrames) {
+        last = Date.now();
+        if (stalled && v.duration && isFinite(v.duration)) { try { v.currentTime = (v.currentTime + 0.04) % v.duration; } catch (e) {} }
+        if (noFrames) v.pause();
+        tryPlay(v);
+      }
+      lastT = v.currentTime;
+    }, 2000);
   }
-  w.__wolfVideo = { tryPlay: tryPlay };
+  w.__wolfVideo = { tryPlay: tryPlay, start: function (v) { if (typeof startLazy === 'function') startLazy(v); } };
 
   /* ---------- Hero video ---------- */
   var video = d.querySelector('.hero-media video');
@@ -184,6 +198,7 @@
       var markPlaying = function () { video.classList.add('is-playing'); };
       if (!video.paused && video.readyState > 2) markPlaying();
       video.addEventListener('playing', markPlaying, { once: true });
+      video.__hero = true;
       if (!REC) robustPlay(video);
       d.addEventListener('visibilitychange', function () {
         if (!video || REC) return;
@@ -194,18 +209,27 @@
 
   /* ---------- In-page loops (process step, gallery): load + play only while on screen ---------- */
   var lazyVids = [].slice.call(d.querySelectorAll('video[data-lazy-video]'));
+  function loadLazy(v) {
+    if (v.getAttribute('src')) return;
+    prepMuted(v);
+    v.preload = 'auto';
+    v.src = v.getAttribute('data-lazy-video') + (canWebm(v) ? '.webm' : '.mp4');
+  }
+  function startLazy(v) {
+    if (saveData) return;
+    loadLazy(v);
+    if (v.__inView === false) return;
+    v.__wantPause = false;
+    if (!REC) robustPlay(v);
+  }
   if (lazyVids.length && !saveData && 'IntersectionObserver' in w) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         var v = e.target;
+        v.__inView = e.isIntersecting;
         if (e.isIntersecting) {
-          v.__wantPause = false;
-          if (!v.getAttribute('src')) {
-            prepMuted(v);
-            v.preload = 'auto';
-            v.src = v.getAttribute('data-lazy-video') + (canWebm(v) ? '.webm' : '.mp4');
-          }
-          if (!REC) robustPlay(v);
+          if (v.closest('.process-media') && v.__wantPause) { loadLazy(v); return; }   // hidden story figure: preload only
+          v.__wantPause = false; startLazy(v);
         } else if (v.getAttribute('src')) { v.__wantPause = true; v.pause(); }
       });
     }, { rootMargin: '200px 0px' });
@@ -367,7 +391,10 @@
       if (count) count.textContent = '0' + (i + 1);
       if (barI) gsap.to(barI, { scaleX: (i + 1) / steps.length, duration: 0.8, ease: 'expo.out' });
       figs.forEach(function (f, k) {
-        if (k === i) gsap.fromTo(f, { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.9, ease: 'expo.out', overwrite: true, zIndex: 2 });
+        var fv = f.querySelector('video[data-lazy-video]');
+        if (fv) { fv.__wantPause = k !== i; if (k !== i && fv.getAttribute('src')) fv.pause(); }
+        if (k === i) gsap.fromTo(f, { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 0.9, ease: 'expo.out', overwrite: true, zIndex: 2,
+          onStart: function () { if (fv && w.__wolfVideo) w.__wolfVideo.start(fv); } });
         else if (k === prev) gsap.to(f, { opacity: 0, duration: 0.9, delay: 0.1, ease: 'power2.out', overwrite: true, zIndex: 1 });
         else gsap.set(f, { opacity: 0, zIndex: 0 });
       });
