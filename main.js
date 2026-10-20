@@ -113,7 +113,41 @@
     if (!v || REC || d.hidden || !v.isConnected || v.__wantPause) return;
     if (!v.paused && !v.ended) return;
     prepMuted(v);
-    try { var p = v.play(); if (p && p.catch) p.catch(function () { /* retried below */ }); } catch (e) {}
+    var onErr = function (e) { if (e && e.name === 'NotAllowedError') markBlocked(v); /* other errors: retried below */ };
+    try { var p = v.play(); if (p && p.catch) p.catch(onErr); } catch (e) { onErr(e); }
+  }
+  /* Autoplay refused (iOS Low Power Mode, data saver, a resume the OS blocks): never leave a visible, unstarted
+     <video> on screen, because iOS draws its native play button over it. Hide the video (CSS .is-blocked) and show its
+     poster instead (the hero has its own <picture>; in-page loops get the poster as the frame background), then retry
+     on the next tap/scroll/key. A 'playing' event undoes all of it. */
+  var blockedVids = [];
+  function markBlocked(v) {
+    if (!v.__blockWired) {
+      v.__blockWired = true;
+      v.addEventListener('playing', function () { v.__blocked = false; v.classList.remove('is-blocked'); });
+    }
+    v.__blocked = true; v.classList.add('is-blocked');
+    if (v.__hero) v.classList.remove('is-playing');
+    var pe = v.parentElement, poster = v.getAttribute('poster');
+    if (pe && poster && !pe.__posterBg) {
+      pe.__posterBg = true;
+      pe.style.backgroundImage = 'url("' + poster + '")'; pe.style.backgroundSize = 'cover'; pe.style.backgroundPosition = 'center';
+    }
+    if (blockedVids.indexOf(v) === -1) blockedVids.push(v);
+    armGestureRetry();
+  }
+  var gestureArmed = false;
+  function armGestureRetry() {
+    if (gestureArmed) return;
+    gestureArmed = true;
+    var evs = ['touchend', 'pointerup', 'click', 'keydown', 'scroll'];
+    var fire = function () {
+      evs.forEach(function (n) { w.removeEventListener(n, fire, true); });
+      gestureArmed = false;
+      var list = blockedVids.splice(0);
+      list.forEach(function (v) { if (v.__blocked) tryPlay(v); });   // play() inside the gesture = allowed by iOS
+    };
+    evs.forEach(function (n) { w.addEventListener(n, fire, { passive: true, capture: true }); });
   }
   var interactQueue = [];
   function onFirstInteraction(v) {
@@ -197,7 +231,7 @@
       if (video.currentSrc) fixSrc(); else video.addEventListener('loadstart', fixSrc, { once: true });
       var markPlaying = function () { video.classList.add('is-playing'); };
       if (!video.paused && video.readyState > 2) markPlaying();
-      video.addEventListener('playing', markPlaying, { once: true });
+      video.addEventListener('playing', markPlaying);   // every time: also after a blocked autoplay is retried
       video.__hero = true;
       if (!REC) robustPlay(video);
       // Rotation (iPad / phone turned after load): the <source media> choice is only made once, so a portrait loop would stay
@@ -210,7 +244,7 @@
         if (!b || (video.currentSrc || '').indexOf(b.split('/').pop() + '.') !== -1) return;
         base = b;
         video.classList.remove('is-playing');
-        video.addEventListener('playing', markPlaying, { once: true });
+        prepMuted(video);
         video.src = b + (canWebm(video) || !video.canPlayType('video/mp4') ? '.webm' : '.mp4') + (vq ? '?' + vq : '');
         video.load(); tryPlay(video);
       };

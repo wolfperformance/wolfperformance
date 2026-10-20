@@ -935,6 +935,15 @@ h4, .info-card h3, .statement-meta dd small { word-spacing: normal; }
   .hero-scroll { display: none; }
 }
 
+/* Background loops never show native media UI. iOS draws a start-playback button over an inline <video> that has not
+   started (e.g. Low Power Mode refuses autoplay); hide it, and hide a refused video entirely so its poster shows (main.js). */
+/* one rule per pseudo-element: an unknown pseudo-element would invalidate a whole selector list */
+video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+video::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none; }
+video::-webkit-media-controls-panel { display: none !important; -webkit-appearance: none; }
+video::-webkit-media-controls { display: none !important; }
+video.is-blocked { opacity: 0 !important; }
+
 /* Nav with "Cars we tune" (model pages preview): keep each link on one line on small laptops / iPad landscape */
 .nav-links a { white-space: nowrap; }
 @media (max-width: 1240px) { .nav-links { gap: 22px; } }
