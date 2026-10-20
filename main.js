@@ -92,57 +92,127 @@
     onScroll(w.scrollY);
   }
 
+  /* ---------- Video helpers ----------
+     Muted inline loops are allowed to autoplay everywhere, but the first play() can still be
+     rejected or interrupted (iOS Low Power Mode, a pending load, DOM moves). So: retry on
+     canplay/loadeddata, ~1.5s later, and on the first user interaction; a frame watchdog
+     restarts playback if frames stop being presented. Reduced motion only disables
+     parallax/pinning; Save-Data / 2G skips video entirely (poster stays). */
+  var conn = navigator.connection || {};
+  var saveData = !!conn.saveData || /(^|-)2g/.test(conn.effectiveType || '');
+  var uaS = navigator.userAgent;
+  var isWebKit = /iPhone|iPad|iPod|CriOS|FxiOS|EdgiOS/.test(uaS) ||
+    (/Safari/.test(uaS) && !/Chrome|Chromium|Edg|OPR|Android|Firefox/.test(uaS)) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function canWebm(v) { return !isWebKit && v.canPlayType('video/webm; codecs="vp9"') === 'probably'; }
+  function prepMuted(v) {
+    v.muted = true; v.defaultMuted = true; v.setAttribute('muted', '');
+    v.playsInline = true; v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+  }
+  function tryPlay(v) {
+    if (!v || REC || d.hidden || !v.isConnected || v.__wantPause) return;
+    if (!v.paused && !v.ended) return;
+    prepMuted(v);
+    try { var p = v.play(); if (p && p.catch) p.catch(function () { /* retried below */ }); } catch (e) {}
+  }
+  var interactQueue = [];
+  function onFirstInteraction(v) {
+    interactQueue.push(v);
+    if (interactQueue.length > 1) return;
+    var evs = ['touchstart', 'pointerdown', 'scroll', 'keydown'];
+    var fire = function () {
+      evs.forEach(function (n) { w.removeEventListener(n, fire, { passive: true, capture: true }); });
+      interactQueue.forEach(tryPlay);
+    };
+    evs.forEach(function (n) { w.addEventListener(n, fire, { passive: true, capture: true, once: true }); });
+  }
+  function robustPlay(v) {
+    if (v.__robust) { tryPlay(v); return; }
+    v.__robust = true;
+    var kick = function () { tryPlay(v); };
+    v.addEventListener('canplay', kick); v.addEventListener('loadeddata', kick);
+    onFirstInteraction(v);
+    tryPlay(v);
+    setTimeout(function () { if (v.paused || v.currentTime === 0) kick(); }, 1500);
+    // Frame watchdog: if playback claims to run but no frame was presented for a while, restart it.
+    if ('requestVideoFrameCallback' in v) {
+      var last = 0, lastT = -1;
+      var onFrame = function () { last = Date.now(); v.requestVideoFrameCallback(onFrame); };
+      v.requestVideoFrameCallback(onFrame);
+      setInterval(function () {
+        if (d.hidden || v.paused || v.__wantPause || v.readyState < 1) { lastT = -1; return; }
+        var r = v.getBoundingClientRect();
+        if (r.bottom <= 0 || r.top >= (w.innerHeight || 800) || r.width === 0) { last = Date.now(); lastT = -1; return; }
+        var noFrames = last && Date.now() - last > 2000 && v.readyState >= 3;
+        var stalled = lastT >= 0 && lastT === v.currentTime;
+        if (noFrames || stalled) {
+          last = Date.now();
+          // A decoder stuck on one frame: nudge the playhead a frame forward, then restart playback.
+          if (stalled && v.duration && isFinite(v.duration)) { try { v.currentTime = (v.currentTime + 0.04) % v.duration; } catch (e) {} }
+          v.pause(); tryPlay(v);
+        }
+        lastT = v.currentTime;
+      }, 2000);
+    }
+  }
+  w.__wolfVideo = { tryPlay: tryPlay };
+
   /* ---------- Hero video ---------- */
   var video = d.querySelector('.hero-media video');
   if (video) {
-    var conn = navigator.connection || {};
-    var saveData = conn.saveData || /(^|-)2g/.test(conn.effectiveType || '');
-    if (reduce || saveData) {
+    if (saveData) {
+      video.removeAttribute('autoplay'); video.pause();
+      [].slice.call(video.querySelectorAll('source')).forEach(function (s) { s.remove(); });
+      video.removeAttribute('src'); try { video.load(); } catch (e) {}
       video.remove(); video = null;
     } else {
+      prepMuted(video);
+      if (REC) { video.removeAttribute('autoplay'); video.autoplay = false; video.pause(); }
+      // <source> order is mp4 first, so WebKit and most browsers start on H.264 straight from the HTML
+      // (no src swap = no reload/abort). Only correct the source when it is wrong for this viewport
+      // (old browsers that ignore media="" on <source>) or when the browser can't play H.264.
       var portrait = w.matchMedia('(max-aspect-ratio: 1/1)').matches;
       var base = video.getAttribute(portrait ? 'data-src-portrait' : 'data-src-landscape');
-      var ua = navigator.userAgent;
-      var safari = /Safari/.test(ua) && !/Chrome|Chromium|Edg|Android/.test(ua);
-      var webm = !safari && video.canPlayType('video/webm; codecs="vp9"') === 'probably';
-      video.src = base + (webm ? '.webm' : '.mp4');
-      video.muted = true; video.defaultMuted = true; video.setAttribute('muted', '');
-      video.preload = 'auto';
+      var fixSrc = function () {
+        var cur = video.currentSrc || '';
+        if (cur && cur.indexOf(base.split('/').pop() + '.') === -1) {
+          video.src = base + (canWebm(video) || !video.canPlayType('video/mp4') ? '.webm' : '.mp4');
+          video.load();
+        }
+      };
+      if (video.currentSrc) fixSrc(); else video.addEventListener('loadstart', fixSrc, { once: true });
       var markPlaying = function () { video.classList.add('is-playing'); };
+      if (!video.paused && video.readyState > 2) markPlaying();
       video.addEventListener('playing', markPlaying, { once: true });
-      if (!REC) {
-        var p = video.play();
-        if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
-      }
+      if (!REC) robustPlay(video);
       d.addEventListener('visibilitychange', function () {
         if (!video || REC) return;
-        if (d.hidden) video.pause(); else video.play().catch(function () {});
+        if (d.hidden) video.pause(); else tryPlay(video);
       });
     }
   }
 
   /* ---------- In-page loops (process step, gallery): load + play only while on screen ---------- */
   var lazyVids = [].slice.call(d.querySelectorAll('video[data-lazy-video]'));
-  if (lazyVids.length) {
-    var c2 = navigator.connection || {};
-    var lite = reduce || c2.saveData || /(^|-)2g/.test(c2.effectiveType || '');
-    var ua2 = navigator.userAgent, saf2 = /Safari/.test(ua2) && !/Chrome|Chromium|Edg|Android/.test(ua2);
-    if (!lite && 'IntersectionObserver' in w) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          var v = e.target;
-          if (e.isIntersecting) {
-            if (!v.src) {
-              var webm2 = !saf2 && v.canPlayType('video/webm; codecs="vp9"') === 'probably';
-              v.src = v.getAttribute('data-lazy-video') + (webm2 ? '.webm' : '.mp4');
-              v.muted = true; v.setAttribute('muted', '');
-            }
-            if (!REC) { var pp = v.play(); if (pp && pp.catch) pp.catch(function () {}); }
-          } else if (v.src) { v.pause(); }
-        });
-      }, { rootMargin: '200px 0px' });
-      lazyVids.forEach(function (v) { io.observe(v); });
-    }
+  if (lazyVids.length && !saveData && 'IntersectionObserver' in w) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting) {
+          v.__wantPause = false;
+          if (!v.getAttribute('src')) {
+            prepMuted(v);
+            v.preload = 'auto';
+            v.src = v.getAttribute('data-lazy-video') + (canWebm(v) ? '.webm' : '.mp4');
+          }
+          if (!REC) robustPlay(v);
+        } else if (v.getAttribute('src')) { v.__wantPause = true; v.pause(); }
+      });
+    }, { rootMargin: '200px 0px' });
+    lazyVids.forEach(function (v) { io.observe(v); });
+    d.addEventListener('visibilitychange', function () {
+      lazyVids.forEach(function (v) { if (d.hidden) { if (v.getAttribute('src')) v.pause(); } else if (v.getAttribute('src') && !v.__wantPause) tryPlay(v); });
+    });
   }
 
   /* ---------- Static fallback (no GSAP / reduced motion) ---------- */
@@ -214,7 +284,7 @@
         out.to(inner, { scale: 0.86, yPercent: -4 }, 0)
            .to(copy, { yPercent: -28, opacity: 0 }, 0)
            .to(shade, { opacity: 0.6 }, 0);
-        ST.create({ trigger: hero, start: 'top top', end: '+=70%', pin: true, pinSpacing: true, scrub: 0.6, animation: out, anticipatePin: 1 });
+        ST.create({ trigger: hero, start: 'top top', end: '+=70%', pin: true, pinSpacer: hero.parentNode.classList.contains('hero-pin') ? hero.parentNode : undefined, pinSpacing: true, scrub: 0.6, animation: out, anticipatePin: 1 });
       });
       mm.add('(max-width: 900px)', function () {
         gsap.to(inner, { yPercent: 16, scale: 1.04, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
@@ -349,6 +419,8 @@
     }
     ST.addEventListener('scrollEnd', sweep);
     w.addEventListener('load', function () { ST.refresh(); });
+    // Safety net: ~1s after every ScrollTrigger refresh, make sure the hero loop is still running.
+    ST.addEventListener('refresh', function () { setTimeout(function () { var hv = d.querySelector('.hero-media video'); if (hv) tryPlay(hv); }, 1000); });
     d.querySelectorAll('img[loading="lazy"]').forEach(function (img) { if (!img.complete) img.addEventListener('load', function () { ST.refresh(); }, { once: true }); });
     if (!REC) setTimeout(function () { sweep(); }, 2500);
     w.__wolfReady = true;

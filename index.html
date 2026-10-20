@@ -29,8 +29,8 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preload" as="image" href="assets/video/hero-poster.avif" type="image/avif" media="(min-aspect-ratio: 1/1)">
-  <link rel="preload" as="image" href="assets/video/hero-poster-portrait.avif" type="image/avif" media="(max-aspect-ratio: 1/1)">
+  <link rel="preload" as="image" href="assets/video/hero-poster.avif?v=1020b" type="image/avif" media="(min-aspect-ratio: 1/1)">
+  <link rel="preload" as="image" href="assets/video/hero-poster-portrait.avif?v=1020b" type="image/avif" media="(max-aspect-ratio: 1/1)">
   <link rel="preload" href="assets/fonts/ClashDisplay-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Inter-Variable-latin.woff2" as="font" type="font/woff2" crossorigin>
   <script>(function(d){try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches){d.classList.add("js-motion");setTimeout(function(){if(!window.__wolfMotion){window.__wolfMotionFailsafe=1;d.classList.remove("js-motion")}},4000)}}catch(e){}})(document.documentElement);</script>
@@ -375,18 +375,24 @@
   </header>
 
   <main id="main">
+    <div class="hero-pin">
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-media" aria-hidden="true">
         <div class="hero-media-inner">
           <picture class="hero-poster">
-            <source type="image/avif" media="(max-aspect-ratio: 1/1)" srcset="assets/video/hero-poster-portrait.avif">
-            <source type="image/webp" media="(max-aspect-ratio: 1/1)" srcset="assets/video/hero-poster-portrait.webp">
-            <source type="image/avif" srcset="assets/video/hero-poster.avif">
-            <source type="image/webp" srcset="assets/video/hero-poster.webp">
-            <img src="assets/video/hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+            <source type="image/avif" media="(max-aspect-ratio: 1/1)" srcset="assets/video/hero-poster-portrait.avif?v=1020b">
+            <source type="image/webp" media="(max-aspect-ratio: 1/1)" srcset="assets/video/hero-poster-portrait.webp?v=1020b">
+            <source type="image/avif" srcset="assets/video/hero-poster.avif?v=1020b">
+            <source type="image/webp" srcset="assets/video/hero-poster.webp?v=1020b">
+            <img src="assets/video/hero-poster.jpg?v=1020b" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
           </picture>
-          <video muted loop playsinline preload="none" disablepictureinpicture tabindex="-1"
-            data-src-landscape="assets/video/hero-1080" data-src-portrait="assets/video/hero-portrait"></video>
+          <video autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback tabindex="-1"
+            data-src-landscape="assets/video/hero-1080" data-src-portrait="assets/video/hero-portrait">
+            <source src="assets/video/hero-portrait.mp4?v=1020b" type="video/mp4" media="(max-aspect-ratio: 1/1)">
+            <source src="assets/video/hero-portrait.webm?v=1020b" type="video/webm" media="(max-aspect-ratio: 1/1)">
+            <source src="assets/video/hero-1080.mp4?v=1020b" type="video/mp4">
+            <source src="assets/video/hero-1080.webm?v=1020b" type="video/webm">
+          </video>
         </div>
       </div>
       <div class="hero-shade" aria-hidden="true"></div>
@@ -394,7 +400,7 @@
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow" data-hero>Mobile ECU tuning · Toronto, the GTA &amp; Barrie</p>
-          <h1 id="hero-heading" data-hero><span class="line"><span class="li">Unlock the car</span></span> <span class="line"><span class="li">you already own<span class="dot">.</span></span></span> <span class="h1-sub"><span class="li">Pro ECU tuning, at your door.</span></span></h1>
+          <h1 id="hero-heading" data-hero><span class="line"><span class="li">Unlock the car</span></span> <span class="line"><span class="li">you already own<span class="dot">.</span></span></span> <span class="h1-sub"><span class="li">Pro ECU tuning, at your door<span class="dot">.</span></span></span></h1>
           <p class="hero-sub" data-hero>Sharper throttle, stronger mid-range and smoother power, calibrated at your home or work with professional-grade equipment. No drop-off. No waiting room.</p>
           <div class="hero-ctas" data-hero>
             <a class="btn btn-primary btn-lg" href="#quote">Get my quote</a>
@@ -408,6 +414,7 @@
       </div>
       <div class="hero-scroll" aria-hidden="true"></div>
     </section>
+    </div>
 
     <section class="trust-row" aria-label="Why drivers choose Wolf Performance">
       <div class="container">
@@ -426,7 +433,7 @@
         <div class="section-head section-head--split">
           <div>
             <p class="kicker" data-reveal>What changes after a tune</p>
-            <h2 id="changes-heading" data-split>The car you thought you bought.</h2>
+            <h2 id="changes-heading" data-split>The car you thought you bought<span class="dot">.</span></h2>
           </div>
           <p data-reveal>A well-made calibration is felt every time you press the pedal, not just at full throttle. This is what a good tune is designed to change.</p>
         </div>
@@ -497,7 +504,7 @@
         <div class="section-head section-head--split">
           <div>
             <p class="kicker" data-reveal>Why mobile</p>
-            <h2 id="why-heading" data-split>Why mobile beats a shop.</h2>
+            <h2 id="why-heading" data-split>Why mobile beats a shop<span class="dot">.</span></h2>
           </div>
           <p data-reveal>Same tools, same process, same logged results. Without the drive, the drop-off or the waiting room.</p>
         </div>
@@ -531,7 +538,7 @@
         <div class="section-head section-head--split">
           <div>
             <p class="kicker" data-reveal>Tuning packages</p>
-            <h2 id="packages-heading" data-split>Choose your stage.</h2>
+            <h2 id="packages-heading" data-split>Choose your stage<span class="dot">.</span></h2>
           </div>
           <p data-reveal>Every tune starts with a health scan and ends with a log. Clear starting prices, then an exact quote once we know your car.</p>
         </div>
@@ -604,7 +611,7 @@
       <div class="container">
         <div class="quote-head">
           <p class="kicker" data-reveal>Quick quote</p>
-          <h2 id="quote-heading" data-reveal>Tell us the car. We&#8217;ll come to it.</h2>
+          <h2 id="quote-heading" data-reveal>Tell us the car<span class="dot">.</span> We&#8217;ll come to it<span class="dot">.</span></h2>
           <p data-reveal>Four fields, about 30 seconds. We reply during business hours with your price and next steps.</p>
         </div>
         <form class="quote-form" data-reveal action="https://formsubmit.co/info@wolfperformance.ca" method="POST">
@@ -648,7 +655,7 @@
       <div class="container">
         <div class="section-head">
           <p class="kicker" data-reveal>How mobile tuning works</p>
-          <h2 id="process-heading" data-split>Book. We come to you. Drive away tuned.</h2>
+          <h2 id="process-heading" data-split>Book<span class="dot">.</span> We come to you<span class="dot">.</span> Drive away tuned<span class="dot">.</span></h2>
         </div>
         <div class="process-grid">
           <div class="process-media" aria-hidden="true">
@@ -664,7 +671,7 @@
                 <source type="image/webp" srcset="assets/img/calmap-w-640.webp 640w, assets/img/calmap-w-1024.webp 1024w, assets/img/calmap-w-1600.webp 1600w, assets/img/calmap-w-2400.webp 2400w" sizes="(max-width: 900px) 100vw, 56vw">
                 <img src="assets/img/calmap-w-1024.jpg" srcset="assets/img/calmap-w-640.jpg 640w, assets/img/calmap-w-1024.jpg 1024w, assets/img/calmap-w-1600.jpg 1600w, assets/img/calmap-w-2400.jpg 2400w" sizes="(max-width: 900px) 100vw, 56vw" alt="" width="2400" height="1500" loading="lazy" decoding="async">
               </picture><figcaption>We come to you</figcaption></figure>
-            <figure><video class="lazy-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/drive-away-poster.webp" data-lazy-video="assets/video/drive-away" width="1280" height="720"></video><figcaption>Drive away tuned</figcaption></figure>
+            <figure><video class="lazy-video" muted loop playsinline webkit-playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/drive-away-poster.webp" data-lazy-video="assets/video/drive-away" width="1280" height="720"></video><figcaption>Drive away tuned</figcaption></figure>
           </div>
           <ol class="steps">
             <li class="step" data-step="0">
@@ -688,7 +695,7 @@
               <p>We arrive at your home, work or driveway with professional-grade tuning and diagnostic equipment. A pre-tune health scan and live data come first, so faults are found before power is added.</p>
             </li>
             <li class="step" data-step="2">
-              <div class="step-img"><video class="lazy-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/drive-away-poster.webp" data-lazy-video="assets/video/drive-away" width="1280" height="720"></video></div>
+              <div class="step-img"><video class="lazy-video" muted loop playsinline webkit-playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/drive-away-poster.webp" data-lazy-video="assets/video/drive-away" width="1280" height="720"></video></div>
               <p class="step-num">03</p>
               <h3>Drive away tuned</h3>
               <p>Your calibration is written for your car, your fuel and your goal, then logged to confirm the result. You get clear notes on exactly what changed.</p>
@@ -702,10 +709,10 @@
       <div class="container">
         <div class="gb-head">
           <p class="kicker" data-reveal>The cars</p>
-          <h2 id="gallery-heading" data-split>Built for drivers who notice.</h2>
+          <h2 id="gallery-heading" data-split>Built for drivers who notice<span class="dot">.</span></h2>
         </div>
         <div class="gb-grid">
-          <figure class="gb-item gb-item--video" data-reveal><video class="lazy-video" muted loop playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/meet-aerial-poster.webp" data-lazy-video="assets/video/meet-aerial" width="1280" height="720"></video></figure>
+          <figure class="gb-item gb-item--video" data-reveal><video class="lazy-video" muted loop playsinline webkit-playsinline preload="none" disablepictureinpicture tabindex="-1" aria-hidden="true" poster="assets/video/meet-aerial-poster.webp" data-lazy-video="assets/video/meet-aerial" width="1280" height="720"></video></figure>
           <figure class="gb-item" data-reveal><picture>
               <source type="image/avif" srcset="assets/img/miata-na-sunset-s-480.avif 480w, assets/img/miata-na-sunset-s-800.avif 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
               <source type="image/webp" srcset="assets/img/miata-na-sunset-s-480.webp 480w, assets/img/miata-na-sunset-s-800.webp 800w" sizes="(max-width: 700px) 50vw, (max-width: 1100px) 25vw, 260px">
@@ -784,7 +791,7 @@
       <div class="container faq-wrap">
         <div class="section-head">
           <p class="kicker" data-reveal>FAQ</p>
-          <h2 id="faq-heading" data-split>Before you book.</h2>
+          <h2 id="faq-heading" data-split>Before you book<span class="dot">.</span></h2>
           <p data-reveal>Straight answers on the visit, safety, power and price.</p>
         </div>
         <div class="faq">
@@ -823,7 +830,7 @@
               </picture></div>
       <div class="container">
         <p class="kicker" data-reveal>Ready when you are</p>
-        <h2 id="closing-heading" data-split>Your car has more to give.</h2>
+        <h2 id="closing-heading" data-split>Your car has more to give<span class="dot">.</span></h2>
         <p data-reveal>We come to you, with no travel fee across Toronto, the GTA and Barrie. Tell us the car and we will tell you what it can do.</p>
         <div class="hero-ctas" data-reveal>
           <a class="btn btn-primary btn-lg" href="#quote">Get my quote</a>

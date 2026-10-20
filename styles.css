@@ -201,6 +201,8 @@ body::after {
 .hero h1 .line, .hero h1 .h1-sub { display: block; overflow: clip; padding-bottom: .1em; margin-bottom: -.1em; }
 .hero h1 .li { display: block; will-change: transform; }
 .hero h1 .dot { color: var(--red); }
+/* Brand-red sentence periods in display headlines */
+h1 .dot, h2 .dot, h3 .dot { color: var(--red); }
 .hero h1 .h1-sub { display: block; margin-top: .42em; font-size: .3em; line-height: 1.1; letter-spacing: -0.01em; font-weight: 500; color: var(--text-soft); }
 .hero-sub { max-width: 560px; font-size: var(--fs-lead); color: var(--text-soft); line-height: 1.55; margin-bottom: 36px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -641,7 +643,6 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .marquee-track { animation: none; }
-  .hero-media video { display: none; }
   .hero-scroll::after, .hero-sweep, .hero-mark::after { display: none; }
   .js-motion [data-reveal], .js-motion .reveal, .js-motion .hero [data-hero], .js-motion .hero-media-inner, .js-motion .page-hero h1, .js-motion .page-hero .breadcrumbs, .js-motion .page-hero .container > p, .js-motion .page-hero-media img { opacity: 1 !important; }
 }
